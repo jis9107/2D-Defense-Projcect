@@ -29,7 +29,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         DisconnectPanel.SetActive(false);
-        //Spawn();
+        Spawn();
     }
 
     private void Update()
@@ -44,10 +44,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         RespawnPanel.SetActive(false);
 
     }
-    //public void Spawn()
-    //{
-    //    PhotonNetwork.Instantiate("RedKnight", Vector3.zero, Quaternion.identity);
-    //    RespawnPanel.SetActive(false);
-    //}
+    public void Spawn()
+    {
+        PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
+        RespawnPanel.SetActive(false);
+    }
 }
 
