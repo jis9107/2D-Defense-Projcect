@@ -42,7 +42,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(true);
         RespawnPanel.SetActive(false);
-
     }
     public void Spawn()
     {
