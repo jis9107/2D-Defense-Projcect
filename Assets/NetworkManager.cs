@@ -8,8 +8,13 @@ using UnityEngine.UI;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public InputField NickNameInput;
+
     public GameObject DisconnectPanel;
     public GameObject RespawnPanel;
+    public GameObject inGame;
+
+    public Text nickNameText;
+    public Image healthImage;
 
     private void Awake()
     {
@@ -45,7 +50,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     public void Spawn()
     {
-        PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate("RedBase", Vector3.zero, Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
 }
