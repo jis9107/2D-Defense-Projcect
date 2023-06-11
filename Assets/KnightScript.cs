@@ -23,12 +23,12 @@ public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-
+        Move();
     }
 
     void Move()
     {
-
+        transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
     }
 
 }
