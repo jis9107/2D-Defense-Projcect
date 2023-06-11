@@ -21,4 +21,14 @@ public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
+    void Update()
+    {
+
+    }
+
+    void Move()
+    {
+
+    }
+
 }
