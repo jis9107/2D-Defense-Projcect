@@ -11,9 +11,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public GameObject DisconnectPanel;
     public GameObject RespawnPanel;
+    public GameObject gameStartPanel;
+    public bool inGame;
+    public float userMoney;
 
     //public Text nickNameText;
-
+    public Text moneyText;
     //public Image healthImage;
 
     private void Awake()
@@ -34,6 +37,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         DisconnectPanel.SetActive(false);
+        gameStartPanel.SetActive(true);
+        inGame = true;
         Spawn();
     }
 
@@ -42,6 +47,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)
         {
             PhotonNetwork.Disconnect();
+        }
+
+        if (inGame == true)
+        {
+            userMoney += Time.deltaTime;
+            int _money = (int)userMoney;
+            moneyText.text = _money.ToString();
         }
     }
 

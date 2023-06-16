@@ -8,32 +8,27 @@ using UnityEngine.UI;
 public class GameControll : MonoBehaviourPunCallbacks
 {
     public GameObject panel;
+    public GameObject gamestartPanel;
+
     public Text knightPrice;
     public Text soldierPrice;
-    public bool inGame;
-    public float userMoney;
-    public Text moneyText;
+
+    float _money;
 
     public void ClickKnight()
     {
         int _knightPrice = int.Parse(knightPrice.text);
-        if(userMoney >= _knightPrice)
+        _money = FindObjectOfType<NetworkManager>().userMoney;
+        if(_money >= _knightPrice)
+        {
             PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
+            _money -= _knightPrice; 
+        }
     }
 
-    void Update()
+    private void Update()
     {
-        if (panel == false)
-        {
-            inGame = true;
-            if (inGame == true)
-            {
-                userMoney += Time.deltaTime;
-                int _money = (int)userMoney;
-                moneyText.text = _money.ToString();
-            }
-        }
-        else
-            inGame = false;
+        
     }
+
 }
