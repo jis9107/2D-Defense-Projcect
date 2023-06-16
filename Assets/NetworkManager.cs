@@ -12,11 +12,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject RespawnPanel;
     public GameObject gameStartPanel;
-    public bool inGame;
-    public float userMoney;
+    //public bool inGame;
+    //public float userMoney;
 
     //public Text nickNameText;
-    public Text moneyText;
+    //public Text moneyText;
     //public Image healthImage;
 
     private void Awake()
@@ -38,7 +38,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         gameStartPanel.SetActive(true);
-        inGame = true;
+        //inGame = true;
         Spawn();
     }
 
@@ -49,18 +49,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Disconnect();
         }
 
-        if (inGame == true)
-        {
-            userMoney += Time.deltaTime;
-            int _money = (int)userMoney;
-            moneyText.text = _money.ToString();
-        }
+        //if (inGame == true)
+        //{
+        //    userMoney += Time.deltaTime;
+        //    int _money = (int)userMoney;
+        //    moneyText.text = _money.ToString();
+        //}
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         DisconnectPanel.SetActive(true);
         RespawnPanel.SetActive(false);
+        gameStartPanel.SetActive(false);
     }
     public void Spawn()
     {

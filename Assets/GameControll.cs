@@ -12,13 +12,14 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     public Text knightPrice;
     public Text soldierPrice;
+    public Text moneyText;
 
-    float _money;
+    public float userMoney;
+    int _money;
 
     public void ClickKnight()
     {
         int _knightPrice = int.Parse(knightPrice.text);
-        _money = FindObjectOfType<NetworkManager>().userMoney;
         if(_money >= _knightPrice)
         {
             PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
@@ -28,7 +29,12 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        
+        if (gamestartPanel)
+        {
+            userMoney += Time.deltaTime;
+            _money = (int)userMoney;
+            moneyText.text = _money.ToString();
+        }
     }
 
 }
