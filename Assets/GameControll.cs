@@ -16,6 +16,7 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     public float userMoney;
     int _money;
+    bool inGame;
 
     public void ClickKnight()
     {
@@ -31,9 +32,13 @@ public class GameControll : MonoBehaviourPunCallbacks
     {
         if (gamestartPanel)
         {
-            userMoney += Time.deltaTime;
-            _money = (int)userMoney;
-            moneyText.text = _money.ToString();
+            inGame = true;
+            if(inGame == true)
+            {
+                userMoney += Time.deltaTime;
+                _money = (int)userMoney;
+                moneyText.text = _money.ToString();
+            }
         }
     }
 

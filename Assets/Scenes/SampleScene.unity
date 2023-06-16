@@ -310,7 +310,7 @@ RectTransform:
   - {fileID: 2129862340}
   - {fileID: 1225278905}
   m_Father: {fileID: 881052087}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1180,9 +1180,6 @@ MonoBehaviour:
   DisconnectPanel: {fileID: 1201186036}
   RespawnPanel: {fileID: 240376129}
   gameStartPanel: {fileID: 881052086}
-  inGame: 0
-  userMoney: 0
-  moneyText: {fileID: 2080929710}
 --- !u!4 &142725539
 Transform:
   m_ObjectHideFlags: 0
@@ -1507,7 +1504,6 @@ RectTransform:
   - {fileID: 1201186037}
   - {fileID: 240376130}
   - {fileID: 1803766997}
-  - {fileID: 2080929709}
   - {fileID: 881052087}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2097,7 +2093,7 @@ RectTransform:
   - {fileID: 45123188}
   - {fileID: 2094478088}
   m_Father: {fileID: 881052087}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2214,9 +2210,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1201186036}
-  netManager: {fileID: 142725537}
+  gamestartPanel: {fileID: 881052086}
   knightPrice: {fileID: 1154355569}
   soldierPrice: {fileID: 2094478089}
+  moneyText: {fileID: 2080929710}
+  userMoney: 0
 --- !u!4 &743088938
 Transform:
   m_ObjectHideFlags: 0
@@ -2258,12 +2256,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2080929709}
   - {fileID: 1962565183}
   - {fileID: 649773530}
   - {fileID: 48534031}
   - {fileID: 1774355896}
   m_Father: {fileID: 243753451}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3368,7 +3367,7 @@ RectTransform:
   - {fileID: 2118448156}
   - {fileID: 1010228014}
   m_Father: {fileID: 881052087}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3914,7 +3913,7 @@ RectTransform:
   - {fileID: 1696871993}
   - {fileID: 1154355568}
   m_Father: {fileID: 881052087}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4037,16 +4036,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080929708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 243753451}
-  m_RootOrder: 3
+  m_Father: {fileID: 881052087}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: 449.99994}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2080929710
