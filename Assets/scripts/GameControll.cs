@@ -12,6 +12,7 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     public Text knightPrice;
     public Text soldierPrice;
+    public Text thiefPrice;
     public Text moneyText;
 
     public float userMoney;
@@ -42,17 +43,17 @@ public class GameControll : MonoBehaviourPunCallbacks
     }
     public void ClickThief()
     {
-        int _knightPrice = int.Parse(knightPrice.text);
-        if (userMoney >= _knightPrice)
+        int _thiefPrice = int.Parse(thiefPrice.text);
+        if (userMoney >= _thiefPrice)
         {
-            PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
-            userMoney -= _knightPrice;
+            PhotonNetwork.Instantiate("Thief", Vector3.zero, Quaternion.identity);
+            userMoney -= _thiefPrice;
         }
     }
 
     private void Update()
     {
-        if (gamestartPanel)
+        if (gamestartPanel.activeSelf == true)
         {
             inGame = true;
             if(inGame == true)
