@@ -18,13 +18,35 @@ public class GameControll : MonoBehaviourPunCallbacks
     int _money;
     bool inGame;
 
+    private void Awake()
+    {
+        inGame = false;
+    }
     public void ClickKnight()
     {
         int _knightPrice = int.Parse(knightPrice.text);
-        if(_money >= _knightPrice)
+        if(userMoney >= _knightPrice)
         {
             PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
-            _money -= _knightPrice; 
+            userMoney -= _knightPrice; 
+        }
+    }
+    public void ClickSoldier()
+    {
+        int _soldierPrice = int.Parse(soldierPrice.text);
+        if (userMoney >= _soldierPrice)
+        {
+            PhotonNetwork.Instantiate("Soldier", Vector3.zero, Quaternion.identity);
+            userMoney -= _soldierPrice;
+        }
+    }
+    public void ClickThief()
+    {
+        int _knightPrice = int.Parse(knightPrice.text);
+        if (userMoney >= _knightPrice)
+        {
+            PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
+            userMoney -= _knightPrice;
         }
     }
 

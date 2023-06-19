@@ -38,7 +38,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         gameStartPanel.SetActive(true);
-        //inGame = true;
         Spawn();
     }
 
@@ -48,13 +47,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Disconnect();
         }
-
-        //if (inGame == true)
-        //{
-        //    userMoney += Time.deltaTime;
-        //    int _money = (int)userMoney;
-        //    moneyText.text = _money.ToString();
-        //}
     }
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -65,7 +57,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     public void Spawn()
     {
-        //PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
 }
