@@ -7,6 +7,14 @@ using UnityEngine.UI;
 
 public class GameControll : MonoBehaviourPunCallbacks
 {
+    public enum State
+    {
+        Red,
+        Blue
+    }
+
+    public State _state;
+
     public GameObject panel;
     public GameObject gamestartPanel;
 
@@ -14,6 +22,9 @@ public class GameControll : MonoBehaviourPunCallbacks
     public Text soldierPrice;
     public Text thiefPrice;
     public Text moneyText;
+
+    public Transform redSpawn;
+    public Transform blueSpawn;
 
     public float userMoney;
     int _money;
@@ -28,8 +39,17 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _knightPrice = int.Parse(knightPrice.text);
         if(userMoney >= _knightPrice)
         {
-            PhotonNetwork.Instantiate("Knight", Vector3.zero, Quaternion.identity);
-            userMoney -= _knightPrice; 
+            if(_state == State.Red)
+            {
+                PhotonNetwork.Instantiate("Knight", redSpawn.position, Quaternion.Euler(0, -180, 0));
+                userMoney -= _knightPrice;
+            }
+            if(_state == State.Blue)
+            {
+                PhotonNetwork.Instantiate("Knight", blueSpawn.position, Quaternion.identity);
+                userMoney -= _knightPrice;
+            }
+ 
         }
     }
     public void ClickSoldier()

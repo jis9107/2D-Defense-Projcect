@@ -12,6 +12,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject RespawnPanel;
     public GameObject gameStartPanel;
+    public GameObject gamecontrol;
     //public bool inGame;
     //public float userMoney;
 

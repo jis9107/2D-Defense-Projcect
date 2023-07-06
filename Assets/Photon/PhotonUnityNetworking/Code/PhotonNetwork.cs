@@ -3306,7 +3306,12 @@ namespace Photon.Pun
             }
         }
 
-        #endif
+        public static void Instantiate(string v, Transform redSpawn, Quaternion identity)
+        {
+            throw new NotImplementedException();
+        }
+
+#endif
 
     }
 }
