@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
 {
-    GameControll.State state;
+    GameControll.State _state;
 
     public Rigidbody2D rb;
     public Animator an;
@@ -23,31 +23,42 @@ public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         
     }
+
     void Start()
     {
-        state = FindObjectOfType<GameControll>()._state;
+        _state = FindObjectOfType<GameControll>()._state;
     }
 
     void Update()
     {
-        if(state == GameControll.State.Red)
-        {
-            RedMove();
-        }
-        if(state == GameControll.State.Blue)
-        {
-            BlueMove();
-        }
+        Move();
+        //if (_state == GameControll.State.Red)
+        //{
+        //    RedMove();
+        //}
+        //if(_state == GameControll.State.Blue)
+        //{
+        //    BlueMove();
+        //}
     }
 
-    void RedMove()
-    {
-        transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
-    }
+    //void RedMove()
+    //{
+    //    transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
+    //}
     
-    void BlueMove() 
+    //void BlueMove() 
+    //{
+    //    transform.position = new Vector2(-transform.position.x + 3f * Time.deltaTime, transform.position.y);
+    //}
+    void Move()
     {
-        transform.position = new Vector2(-transform.position.x + 3f * Time.deltaTime, transform.position.y);
+        if(_state == GameControll.State.Blue)
+            transform.position = new Vector2(-transform.position.x + 3f * Time.deltaTime, transform.position.y);
+        else
+            transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
+        
+
     }
 
 }

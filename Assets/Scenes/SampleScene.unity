@@ -2240,7 +2240,7 @@ MonoBehaviour:
   thiefPrice: {fileID: 1225278906}
   moneyText: {fileID: 2080929710}
   redSpawn: {fileID: 827724720}
-  blueSpawn: {fileID: 827724720}
+  blueSpawn: {fileID: 1422298433}
   userMoney: 0
 --- !u!4 &743088938
 Transform:
