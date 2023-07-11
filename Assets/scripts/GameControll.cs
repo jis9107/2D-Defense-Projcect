@@ -41,12 +41,12 @@ public class GameControll : MonoBehaviourPunCallbacks
         {
             if(_state == State.Red)
             {
-                PhotonNetwork.Instantiate("Knight", redSpawn.position, Quaternion.Euler(0, -180, 0));
+                PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _knightPrice;
             }
             if(_state == State.Blue)
             {
-                PhotonNetwork.Instantiate("Knight", blueSpawn.position, Quaternion.identity);
+                PhotonNetwork.Instantiate("BlueKnight", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _knightPrice;
             }
  

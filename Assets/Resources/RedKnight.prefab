@@ -343,11 +343,11 @@ GameObject:
   - component: {fileID: 9033980577547507643}
   - component: {fileID: 9033980577547507640}
   - component: {fileID: 9033980577547507642}
-  - component: {fileID: 9033980577547507636}
   - component: {fileID: 9033980577547507637}
   - component: {fileID: 9033980577547507638}
+  - component: {fileID: -3474170372064257231}
   m_Layer: 0
-  m_Name: Knight
+  m_Name: RedKnight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,22 +501,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &9033980577547507636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033280742241102028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a148ebf5738a05e48959aa06f122878d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 9033980577547507641}
-  an: {fileID: 8939266449765229386}
-  sr: {fileID: 9033980577547507640}
-  pv: {fileID: 9033980577547507638}
 --- !u!114 &9033980577547507637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,11 +537,27 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 9033980577547507642}
-  - {fileID: 9033980577547507636}
   - {fileID: 9033980577547507637}
+  - {fileID: -3474170372064257231}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-3474170372064257231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033280742241102028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdf8974ff5dd1d4e848c84cbac3a313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 9033980577547507641}
+  an: {fileID: 8939266449765229386}
+  sr: {fileID: 9033980577547507640}
+  pv: {fileID: 9033980577547507638}
 --- !u!1 &9033280742654033398
 GameObject:
   m_ObjectHideFlags: 0

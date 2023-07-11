@@ -54,7 +54,7 @@ public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
     void Move()
     {
         if(_state == GameControll.State.Blue)
-            transform.position = new Vector2(-transform.position.x + 3f * Time.deltaTime, transform.position.y);
+            transform.position = new Vector2(transform.position.x + -3f * Time.deltaTime, transform.position.y);
         else
             transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
         
