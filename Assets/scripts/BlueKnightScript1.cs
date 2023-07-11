@@ -13,6 +13,9 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer sr;
     public PhotonView pv;
 
+    bool isMove;
+    bool isAttack;
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -21,12 +24,12 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        
+        an = GetComponent<Animator>();
     }
 
     void Start()
     {
-        _state = FindObjectOfType<GameControll>()._state;
+        //_state = FindObjectOfType<GameControll>()._state;
     }
 
     void Update()
