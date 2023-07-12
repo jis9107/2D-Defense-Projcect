@@ -28,7 +28,7 @@ public class RedSoldier : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x + 1.5f * Time.deltaTime, transform.position.y);
+        transform.position = new Vector2(transform.position.x + 1f * Time.deltaTime, transform.position.y);
     }
 
 }

@@ -28,7 +28,7 @@ public class ThiefScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
+        transform.position = new Vector2(transform.position.x + 1.2f * Time.deltaTime, transform.position.y);
     }
 
 }

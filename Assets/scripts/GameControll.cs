@@ -73,8 +73,16 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _thiefPrice = int.Parse(thiefPrice.text);
         if (userMoney >= _thiefPrice)
         {
-            PhotonNetwork.Instantiate("Thief", Vector3.zero, Quaternion.identity);
-            userMoney -= _thiefPrice;
+            if (_state == State.Red)
+            {
+                PhotonNetwork.Instantiate("RedThief", redSpawn.position, Quaternion.Euler(0, -180, 0));
+                userMoney -= _thiefPrice;
+            }
+            if (_state == State.Blue)
+            {
+                PhotonNetwork.Instantiate("BlueThief", blueSpawn.position, Quaternion.Euler(0, 0, 0));
+                userMoney -= _thiefPrice;
+            }
         }
     }
 

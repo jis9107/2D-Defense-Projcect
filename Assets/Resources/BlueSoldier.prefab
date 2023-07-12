@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950652532449616}
   - component: {fileID: 7636208709469810496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950652332373592}
   - component: {fileID: 7636208706412448086}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Front arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6951626325829200816}
   - component: {fileID: 3344062442948850062}
   - component: {fileID: 603378827486069100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlueSoldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950653276591048}
   - component: {fileID: 7636208705823206140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950654914543130}
   - component: {fileID: 7636208706632747096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Front leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950652525994160}
   - component: {fileID: 7636208709427184218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950658319070426}
   - component: {fileID: 7636208712618202006}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7711950655591369688}
   - component: {fileID: 7636208712738623958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

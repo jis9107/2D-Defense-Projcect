@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class BlueSoldier : MonoBehaviourPunCallbacks, IPunObservable
+public class BlueThief : MonoBehaviourPunCallbacks, IPunObservable
 {
     public Rigidbody2D rb;
     public Animator an;
@@ -28,7 +28,7 @@ public class BlueSoldier : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x - 1f * Time.deltaTime, transform.position.y);
+        transform.position = new Vector2(transform.position.x - 1.2f * Time.deltaTime, transform.position.y);
     }
 
 }
