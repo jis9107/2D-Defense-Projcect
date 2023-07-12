@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
+public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 {
     GameControll.State _state;
 
@@ -16,12 +16,12 @@ public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        
+
     }
 
     void Awake()
     {
-        
+
     }
 
     void Start()
@@ -46,19 +46,14 @@ public class KnightScript : MonoBehaviourPunCallbacks, IPunObservable
     //{
     //    transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
     //}
-    
+
     //void BlueMove() 
     //{
     //    transform.position = new Vector2(-transform.position.x + 3f * Time.deltaTime, transform.position.y);
     //}
     void Move()
     {
-        if(_state == GameControll.State.Blue)
-            transform.position = new Vector2(transform.position.x + -3f * Time.deltaTime, transform.position.y);
-        else
-            transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
-        
-
+        transform.position = new Vector2(transform.position.x - 3f * Time.deltaTime, transform.position.y);
     }
 
 }
