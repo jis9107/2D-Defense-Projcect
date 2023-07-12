@@ -49,7 +49,6 @@ public class GameControll : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate("BlueKnight", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _knightPrice;
             }
- 
         }
     }
     public void ClickSoldier()
@@ -57,8 +56,16 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _soldierPrice = int.Parse(soldierPrice.text);
         if (userMoney >= _soldierPrice)
         {
-            PhotonNetwork.Instantiate("Soldier", Vector3.zero, Quaternion.identity);
-            userMoney -= _soldierPrice;
+            if (_state == State.Red)
+            {
+                PhotonNetwork.Instantiate("RedSoldier", redSpawn.position, Quaternion.Euler(0, -180, 0));
+                userMoney -= _soldierPrice;
+            }
+            if (_state == State.Blue)
+            {
+                PhotonNetwork.Instantiate("BlueSoldier", blueSpawn.position, Quaternion.Euler(0, 0, 0));
+                userMoney -= _soldierPrice;
+            }
         }
     }
     public void ClickThief()
