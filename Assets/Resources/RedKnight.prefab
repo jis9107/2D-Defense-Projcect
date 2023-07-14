@@ -273,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9033280742002102488}
   m_LocalRotation: {x: -0, y: -0, z: 0.9021806, w: 0.4313586}
-  m_LocalPosition: {x: 0.03, y: -0.669, z: 0.1}
+  m_LocalPosition: {x: 0.03, y: -0.669, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9030016892135121538}
@@ -499,7 +499,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: die
   m_SynchronizeLayers:
-  - SynchronizeType: 1
+  - SynchronizeType: 0
     LayerIndex: 0
 --- !u!114 &9033980577547507637
 MonoBehaviour:
