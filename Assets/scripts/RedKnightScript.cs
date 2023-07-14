@@ -36,7 +36,12 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         //Vector2 attackRange = new Vector2(transform.position.x + 1, transform.position.y);
         //RaycastHit2D rayHit = Physics2D.Raycast(attackRange, Vector2.up,  LayerMask.GetMask("Red"));
-        Move();
+        if(!isAttack)
+            Move();
+
+        isAttack = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(3f, 0), 0.07f, 1 << LayerMask.NameToLayer("Blue"));
+        if (isAttack)
+            pv.RPC("AttackRPC", RpcTarget.All);
     }
 
     void Move()
@@ -44,15 +49,10 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         transform.position = new Vector2(transform.position.x + 1f * Time.deltaTime, transform.position.y);
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    Debug.Log(other);
-    //    if(other.tag == "Blue")
-    //    {
-    //        isAttack = true;
-    //        an.SetTrigger("attack");
-    //    }
-
-    //}
+    [PunRPC]
+    void AttackRPC()
+    {
+        an.SetTrigger("attack");
+    }
 
 }

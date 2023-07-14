@@ -22,6 +22,8 @@ public class GameControll : MonoBehaviourPunCallbacks
     public Text soldierPrice;
     public Text thiefPrice;
     public Text moneyText;
+    public Text redName;
+    public Text blueName;
 
     public Transform redSpawn;
     public Transform blueSpawn;
