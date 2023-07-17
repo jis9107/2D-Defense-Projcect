@@ -38,17 +38,19 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if(isMove == true)
+        if (isMove == true)
             Move();
-        attackReady = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(1f, 0), 0.07f, 1 << LayerMask.NameToLayer("Blue"));
-        if (attackReady && !isAttack)
-            StartCoroutine(Attack());
+        //attackReady = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(1f, 0), 0.07f, 1 << LayerMask.NameToLayer("Blue"));
+        //if (attackReady && !isAttack)
+        //    StartCoroutine(Attack());
             
     }
+
 
     void Move()
     {
         transform.position = new Vector2(transform.position.x + 1f * Time.deltaTime, transform.position.y);
+
     }
 
     [PunRPC]
@@ -75,9 +77,16 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
         //yield return new WaitForSeconds(1f);
         //meleeArea.enabled = false;
-
-        isMove = true;
         isAttack = false;
+        isMove = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Blue")
+        {
+            StartCoroutine(Attack());   
+        }
     }
 
 

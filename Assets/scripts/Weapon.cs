@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
         Thief
     }
     public Type type;
-
+    
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
