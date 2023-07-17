@@ -12,6 +12,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public Animator an;
     public SpriteRenderer sr;
     public PhotonView pv;
+    public GameObject meleeArea;
 
     bool isMove;
     bool attackReady;
@@ -41,7 +42,8 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             Move();
         attackReady = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(1f, 0), 0.07f, 1 << LayerMask.NameToLayer("Blue"));
         if (attackReady && !isAttack)
-            pv.RPC("AttackRPC", RpcTarget.All);
+            StartCoroutine(Attack());
+            
     }
 
     void Move()
@@ -52,7 +54,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void AttackRPC()
     {
-        StartCoroutine(Attack());
+        an.SetTrigger("attack");
     }
 
     [PunRPC]
@@ -66,7 +68,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         isMove = false;
         isAttack = true;
-        an.SetTrigger("attack");
+        pv.RPC("AttackRPC", RpcTarget.All);
 
         yield return new WaitForSeconds(0.2f);
         //meleeArea.enabled = true;
