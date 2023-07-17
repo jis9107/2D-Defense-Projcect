@@ -38,7 +38,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (isMove == true)
+        if (isMove && !isAttack)
             Move();
         //attackReady = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(1f, 0), 0.07f, 1 << LayerMask.NameToLayer("Blue"));
         //if (attackReady && !isAttack)
@@ -77,15 +77,15 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
         //yield return new WaitForSeconds(1f);
         //meleeArea.enabled = false;
-        isAttack = false;
         isMove = true;
+        isAttack = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Blue")
         {
-            StartCoroutine(Attack());   
+            StartCoroutine(Attack());
         }
     }
 
