@@ -40,9 +40,20 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (isMove && !isAttack)
             Move();
-        //attackReady = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(1f, 0), 0.07f, 1 << LayerMask.NameToLayer("Blue"));
-        //if (attackReady && !isAttack)
-        //    StartCoroutine(Attack());
+        Debug.DrawRay(rb.position, Vector2.right, new Color(1, 0, 0));
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.right, 1, LayerMask.GetMask("Blue"));
+        if(hit.collider != null)
+        {
+            isMove = false;
+            isAttack = true;
+            StartCoroutine(Attack());
+        }
+        else
+        {
+            isMove = true;
+            isAttack = false;
+        }
+
             
     }
 
@@ -68,8 +79,6 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     IEnumerator Attack()
     {
-        isMove = false;
-        isAttack = true;
         pv.RPC("AttackRPC", RpcTarget.All);
 
         yield return new WaitForSeconds(0.2f);
@@ -77,17 +86,15 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
         //yield return new WaitForSeconds(1f);
         //meleeArea.enabled = false;
-        isMove = true;
-        isAttack = false;
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Blue")
-        {
-            StartCoroutine(Attack());
-        }
-    }
+    //void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.tag == "Blue")
+    //    {
+    //        StartCoroutine(Attack());
+    //    }
+    //}
 
 
 }
