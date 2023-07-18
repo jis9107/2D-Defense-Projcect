@@ -40,7 +40,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (isMove && !isAttack)
             Move();
-        Debug.DrawRay(rb.position, Vector2.right, new Color(1, 0, 0));
+        Debug.DrawRay(rb.position , Vector2.right, new Color(1, 0, 0));
         RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.right, 1, LayerMask.GetMask("Blue"));
         if(hit.collider != null)
         {
