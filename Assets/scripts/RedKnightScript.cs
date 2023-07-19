@@ -38,23 +38,15 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (isMove && !isAttack)
+        if (isMove)
             Move();
-        Debug.DrawRay(rb.position , Vector2.right, new Color(1, 0, 0));
-        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.right, 1, LayerMask.GetMask("Blue"));
-        if(hit.collider != null)
+        Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f) , Vector2.right, new Color(1, 0, 0));
+        RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f) , Vector2.right, 0.1f);
+        if(hit.collider.tag == "Blue")
         {
             isMove = false;
-            isAttack = true;
             StartCoroutine(Attack());
         }
-        else
-        {
-            isMove = true;
-            isAttack = false;
-        }
-
-            
     }
 
 
