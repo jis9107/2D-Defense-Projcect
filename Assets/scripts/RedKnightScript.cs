@@ -59,7 +59,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             pv.RPC("AttackRPC", RpcTarget.All);
             StartCoroutine(Attack());
         }
-        else if (hit.collider.tag == "Red")
+        else
         {
             isMove = false;
         }
