@@ -258,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9030016894304263364}
   - component: {fileID: 9200301647550547692}
+  - component: {fileID: 683705671}
   m_Layer: 8
   m_Name: sword
   m_TagString: Untagged
@@ -329,6 +330,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &683705671
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033280742002102488}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.37950224}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.14860903}
+    oldSize: {x: 0.38, y: 1.08}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38, y: 1.08}
+  m_EdgeRadius: 0
 --- !u!1 &9033280742241102028
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,8 +371,8 @@ GameObject:
   - component: {fileID: 9033980577547507640}
   - component: {fileID: 9033980577547507642}
   - component: {fileID: 9033980577547507637}
-  - component: {fileID: 9033980577547507638}
   - component: {fileID: -3474170372064257231}
+  - component: {fileID: 9033980577547507638}
   m_Layer: 8
   m_Name: RedKnight
   m_TagString: Red
@@ -418,7 +445,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.01}
@@ -517,6 +544,23 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-3474170372064257231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033280742241102028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdf8974ff5dd1d4e848c84cbac3a313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 9033980577547507641}
+  an: {fileID: 8939266449765229386}
+  sr: {fileID: 9033980577547507640}
+  pv: {fileID: 9033980577547507638}
+  meleeArea: {fileID: 683705671}
 --- !u!114 &9033980577547507638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,23 +586,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-3474170372064257231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033280742241102028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdf8974ff5dd1d4e848c84cbac3a313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 9033980577547507641}
-  an: {fileID: 8939266449765229386}
-  sr: {fileID: 9033980577547507640}
-  pv: {fileID: 9033980577547507638}
-  meleeArea: {fileID: 0}
 --- !u!1 &9033280742654033398
 GameObject:
   m_ObjectHideFlags: 0

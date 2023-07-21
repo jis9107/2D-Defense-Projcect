@@ -12,7 +12,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public Animator an;
     public SpriteRenderer sr;
     public PhotonView pv;
-    public GameObject meleeArea;
+    public BoxCollider2D meleeArea;
 
     bool isMove;
     bool attackReady;
@@ -33,19 +33,35 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         isMove = true;
-    //    _state = FindObjectOfType<GameControll>()._state;
     }
 
     void Update()
     {
-        if (isMove)
+
+    }
+
+    void FixedUpdate()
+    {
+        if (isMove == true)
+        {
+            an.SetBool("walk", true);
             Move();
-        Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f) , Vector2.right, new Color(1, 0, 0));
-        RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f) , Vector2.right, 0.1f);
-        if(hit.collider.tag == "Blue")
+        }
+        else
+            an.SetBool("walk", false);
+        Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 0.1f, new Color(1, 0, 0));
+        RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.1f);
+        if (hit.collider == null)
+            isMove = true;
+        else if (hit.collider.tag == "Blue")
         {
             isMove = false;
+            pv.RPC("AttackRPC", RpcTarget.All);
             StartCoroutine(Attack());
+        }
+        else if (hit.collider.tag == "Red")
+        {
+            isMove = false;
         }
     }
 
@@ -71,22 +87,12 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     IEnumerator Attack()
     {
-        pv.RPC("AttackRPC", RpcTarget.All);
-
-        yield return new WaitForSeconds(0.2f);
-        //meleeArea.enabled = true;
-
-        //yield return new WaitForSeconds(1f);
-        //meleeArea.enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        meleeArea.enabled = true;
+        yield return new WaitForSeconds(0.7f);
+        meleeArea.enabled = false;
     }
 
-    //void OnTriggerStay2D(Collider2D other)
-    //{
-    //    if (other.tag == "Blue")
-    //    {
-    //        StartCoroutine(Attack());
-    //    }
-    //}
 
 
 }
