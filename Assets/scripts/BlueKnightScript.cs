@@ -6,12 +6,16 @@ using Photon.Realtime;
 
 public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 {
-    GameControll.State _state;
-
     public Rigidbody2D rb;
     public Animator an;
     public SpriteRenderer sr;
     public PhotonView pv;
+    public BoxCollider2D meleeArea;
+
+    public int curHealth;
+
+    bool isMove;
+    bool isDamage;
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -21,39 +25,97 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-
+        rb = GetComponent<Rigidbody2D>();
+        an = GetComponent<Animator>();
     }
 
     void Start()
     {
-        _state = FindObjectOfType<GameControll>()._state;
+
     }
 
     void Update()
     {
-        Move();
-        //if (_state == GameControll.State.Red)
-        //{
-        //    RedMove();
-        //}
-        //if(_state == GameControll.State.Blue)
-        //{
-        //    BlueMove();
-        //}
+
     }
 
-    //void RedMove()
-    //{
-    //    transform.position = new Vector2(transform.position.x + 3f * Time.deltaTime, transform.position.y);
-    //}
+    void FixedUpdate()
+    {
+        if (isMove == true)
+        {
+            an.SetBool("walk", true);
+            Move();
+        }
+        else
+            an.SetBool("walk", false);
+        Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.left * 0.7f), Vector2.left * 0.1f, new Color(1, 0, 0));
+        RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.1f);
+        if (hit.collider == null)
+            isMove = true;
+        else if (hit.collider.tag == "Red")
+        {
+            isMove = false;
+            pv.RPC("AttackRPC", RpcTarget.All);
+            StartCoroutine(Attack());
+        }
+        else
+        {
+            isMove = false;
+        }
+    }
 
-    //void BlueMove() 
-    //{
-    //    transform.position = new Vector2(-transform.position.x + 3f * Time.deltaTime, transform.position.y);
-    //}
+
     void Move()
     {
         transform.position = new Vector2(transform.position.x - 1f * Time.deltaTime, transform.position.y);
+
     }
 
+    [PunRPC]
+    void AttackRPC()
+    {
+        an.SetTrigger("attack");
+    }
+
+    [PunRPC]
+    //void MoveRPC()
+    //{
+    //    an.SetBool("walk", true);
+    //    Move();
+    //}
+
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.3f);
+        meleeArea.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        meleeArea.enabled = false;
+    }
+
+    void OnTriggerEnter2D(Collider other)
+    {
+        if (other.tag == "RedMelee")
+        {
+            if (!isDamage)
+            {
+                Weapon weapon = other.GetComponent<Weapon>();
+                curHealth -= weapon.damage;
+                StartCoroutine("OnDamage");
+            }
+
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        yield return new WaitForSeconds(0.5f);
+
+        isDamage = false;
+
+
+        if (curHealth <= 0)
+            Destroy(this);
+
+    }
 }

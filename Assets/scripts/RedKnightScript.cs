@@ -6,17 +6,16 @@ using Photon.Realtime;
 
 public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 {
-    GameControll.State _state;
-
     public Rigidbody2D rb;
     public Animator an;
     public SpriteRenderer sr;
     public PhotonView pv;
     public BoxCollider2D meleeArea;
 
+    public int curHealth;
+
     bool isMove;
-    bool attackReady;
-    bool isAttack;
+    bool isDamage;
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -32,7 +31,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Start()
     {
-        isMove = true;
+        
     }
 
     void Update()
@@ -89,8 +88,35 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         yield return new WaitForSeconds(0.3f);
         meleeArea.enabled = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         meleeArea.enabled = false;
+    }
+
+    void OnTriggerEnter2D(Collider other)
+    {
+        if (other.tag == "BlueMelee")
+        {
+            if (!isDamage)
+            {
+                Weapon weapon = other.GetComponent<Weapon>();
+                curHealth -= weapon.damage;
+                StartCoroutine("OnDamage");
+            }
+
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        yield return new WaitForSeconds(0.5f);
+
+        isDamage = false;
+
+        
+        if(curHealth <= 0)
+            Destroy(this);
+        
     }
 
 

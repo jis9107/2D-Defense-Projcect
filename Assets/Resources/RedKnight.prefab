@@ -259,9 +259,10 @@ GameObject:
   - component: {fileID: 9030016894304263364}
   - component: {fileID: 9200301647550547692}
   - component: {fileID: 683705671}
+  - component: {fileID: 2217789386343517502}
   m_Layer: 8
   m_Name: sword
-  m_TagString: Untagged
+  m_TagString: RedMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,6 +357,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &2217789386343517502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033280742002102488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2d0ed09797f934b85981eb53bd8e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  damage: 10
 --- !u!1 &9033280742241102028
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +576,7 @@ MonoBehaviour:
   sr: {fileID: 9033980577547507640}
   pv: {fileID: 9033980577547507638}
   meleeArea: {fileID: 683705671}
+  curHealth: 30
 --- !u!114 &9033980577547507638
 MonoBehaviour:
   m_ObjectHideFlags: 0
