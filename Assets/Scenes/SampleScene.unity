@@ -2494,7 +2494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436262f526e7b284aa095d955e4078ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _state: 1
+  _state: 0
   panel: {fileID: 1201186036}
   gamestartPanel: {fileID: 881052086}
   knightPrice: {fileID: 1154355569}

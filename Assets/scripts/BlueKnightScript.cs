@@ -78,15 +78,16 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void DieRPC()
+    void DestoryRPC()
     {
+        StopAllCoroutines();
         an.SetTrigger("die");
-        Destroy(this.gameObject, 1f);
+        Destroy(gameObject, 0.7f);
     }
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         meleeArea.enabled = true;
         yield return new WaitForSeconds(0.5f);
         meleeArea.enabled = false;
@@ -101,6 +102,9 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 Weapon weapon = other.GetComponent<Weapon>();
                 curHealth -= weapon.damage;
                 StartCoroutine("OnDamage");
+
+                if (curHealth <= 0)
+                    pv.RPC("DieRPC", RpcTarget.All);
             }
 
         }
@@ -114,8 +118,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         isDamage = false;
 
 
-        if (curHealth <= 0)
-            pv.RPC("DieRPC", RpcTarget.All);
+
 
     }
 }
