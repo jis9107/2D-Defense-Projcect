@@ -7,6 +7,7 @@ TagManager:
   - Red
   - Blue
   - RedMelee
+  - BlueMelee
   layers:
   - Default
   - TransparentFX

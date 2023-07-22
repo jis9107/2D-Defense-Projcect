@@ -92,7 +92,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         meleeArea.enabled = false;
     }
 
-    void OnTriggerEnter2D(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "BlueMelee")
         {
@@ -109,13 +109,13 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     IEnumerator OnDamage()
     {
         isDamage = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         isDamage = false;
 
         
         if(curHealth <= 0)
-            Destroy(this);
+            Destroy(this.gameObject);
         
     }
 
