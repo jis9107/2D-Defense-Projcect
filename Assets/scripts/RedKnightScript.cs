@@ -78,11 +78,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    //void MoveRPC()
-    //{
-    //    an.SetBool("walk", true);
-    //    Move();
-    //}
+    void DieRPC()
+    {
+        an.SetTrigger("die");
+        Destroy(this.gameObject, 1f);
+    }
 
     IEnumerator Attack()
     {
@@ -113,9 +113,9 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
         isDamage = false;
 
-        
-        if(curHealth <= 0)
-            Destroy(this.gameObject);
+
+        if (curHealth <= 0)
+            pv.RPC("DiePRC", RpcTarget.All);
         
     }
 

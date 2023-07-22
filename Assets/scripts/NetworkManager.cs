@@ -39,7 +39,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         gameStartPanel.SetActive(true);
-        Spawn();
     }
 
     private void Update()
@@ -53,7 +52,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         DisconnectPanel.SetActive(true);
-        RespawnPanel.SetActive(false);
         gameStartPanel.SetActive(false);
     }
     public void Spawn()

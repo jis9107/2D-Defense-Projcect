@@ -80,7 +80,8 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void DieRPC()
     {
-        Destroy(this.gameObject);
+        an.SetTrigger("die");
+        Destroy(this.gameObject, 1f);
     }
 
     IEnumerator Attack()
