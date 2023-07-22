@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 6584894339991832608}
   - component: {fileID: 6584894339991832611}
   - component: {fileID: 2734374279537101483}
+  - component: {fileID: 3526171442801416480}
   m_Layer: 9
   m_Name: BlueKnight
   m_TagString: Blue
@@ -541,7 +542,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.01}
@@ -662,6 +663,7 @@ MonoBehaviour:
   - {fileID: 6584894339991832623}
   - {fileID: 6584894339991832608}
   - {fileID: 2734374279537101483}
+  - {fileID: 3526171442801416480}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -678,11 +680,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6584894339991832620}
+  tr: {fileID: 6587652993798071355}
   an: {fileID: 6499745955772644575}
   sr: {fileID: 6584894339991832621}
   pv: {fileID: 6584894339991832611}
   meleeArea: {fileID: 200843438}
   curHealth: 30
+--- !u!114 &3526171442801416480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6584740954440644441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6584740954982908461
 GameObject:
   m_ObjectHideFlags: 0

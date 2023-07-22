@@ -104,7 +104,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 StartCoroutine("OnDamage");
                 
                 if (curHealth <= 0)
-                    pv.RPC("DestoryRPC", RpcTarget.All);
+                    pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
             }
 
         }

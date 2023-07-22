@@ -67,8 +67,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x - 1f * Time.deltaTime, transform.position.y);
-
+        transform.position = new Vector2(transform.position.x + (-1f * Time.deltaTime), transform.position.y);
     }
 
     [PunRPC]
@@ -104,7 +103,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 StartCoroutine("OnDamage");
 
                 if (curHealth <= 0)
-                    pv.RPC("DieRPC", RpcTarget.All);
+                    pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
             }
 
         }
