@@ -79,16 +79,14 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void DestoryRPC()
     {
-        StopAllCoroutines();
         an.SetTrigger("die");
-        Destroy(gameObject, 0.7f);
     }
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         meleeArea.enabled = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         meleeArea.enabled = false;
     }
 
@@ -103,7 +101,11 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 StartCoroutine("OnDamage");
 
                 if (curHealth <= 0)
-                    pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
+                {
+                    StopAllCoroutines();
+                    pv.RPC("DestoryRPC", RpcTarget.All);
+                    Destroy(gameObject, 0.4f);
+                }
             }
 
         }
@@ -112,7 +114,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     IEnumerator OnDamage()
     {
         isDamage = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
 
         isDamage = false;
 
