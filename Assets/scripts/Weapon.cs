@@ -24,7 +24,12 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (type == Type.Knight)
+            damage = 1;
+        if (type == Type.Soldier)
+            damage = 2;
+        if (type == Type.Thief)
+            damage = 3;
     }
 
     // Update is called once per frame
