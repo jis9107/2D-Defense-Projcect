@@ -67,6 +67,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void UpdatePlayerCounts()
     {
         currentText.text = $"{PhotonNetwork.CurrentRoom.PlayerCount} / {PhotonNetwork.CurrentRoom.MaxPlayers}";
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            loadingPanel.SetActive(false);
+            gameStartPanel.SetActive(true);
+        }
     }
 
     public override void OnConnectedToMaster()
@@ -80,19 +86,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         print("방 참가 완료");
 
-        Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}은 인원수 {PhotonNetwork.CurrentRoom.MaxPlayers} 매칭 기다리는 중 ");
-        UpdatePlayerCounts();
-
         DisconnectPanel.SetActive(false);
         loadingPanel.SetActive(true);
 
-        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-        {
-            loadingPanel.SetActive(false);
-            gameStartPanel.SetActive(true);
-        }
+        Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}은 인원수 {PhotonNetwork.CurrentRoom.MaxPlayers} 매칭 기다리는 중 ");
+        UpdatePlayerCounts();
 
-        //gameStartPanel.SetActive(true);
+
+
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -105,11 +106,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             gameControl = FindObjectOfType<GameControll>();
             gameControl._state = GameControll.State.Red;
         }
-        //if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-        //{
-        //    loadingPanel.SetActive(false);
-        //    gameStartPanel.SetActive(true);
-        //}
     }
 
     //private void Update()

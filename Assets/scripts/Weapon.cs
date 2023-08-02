@@ -25,11 +25,11 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         if (type == Type.Knight)
-            damage = 1;
+            damage = 10;
         if (type == Type.Soldier)
-            damage = 2;
+            damage = 12;
         if (type == Type.Thief)
-            damage = 3;
+            damage = 15;
     }
 
     // Update is called once per frame
