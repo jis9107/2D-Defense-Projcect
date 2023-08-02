@@ -27,12 +27,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.SerializationRate = 30;
     }
 
-    public void Connect() => PhotonNetwork.ConnectUsingSettings();
+    private void Start()
+    {
+        PhotonNetwork.ConnectUsingSettings();
+    }
+
+    //public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
-        PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 2 }, null);
+        //PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
+        //PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 2 }, null);
     }
 
     public override void OnJoinedRoom()
