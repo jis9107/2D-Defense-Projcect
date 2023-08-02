@@ -86,6 +86,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         DisconnectPanel.SetActive(false);
         loadingPanel.SetActive(true);
 
+        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            loadingPanel.SetActive(false);
+            gameStartPanel.SetActive(true);
+        }
+
         //gameStartPanel.SetActive(true);
     }
 
@@ -98,13 +104,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             gameControl = FindObjectOfType<GameControll>();
             gameControl._state = GameControll.State.Red;
-            if(PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-            {
-                loadingPanel.SetActive(false);
-                gameStartPanel.SetActive(true);
-            }
-
         }
+        //if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+        //{
+        //    loadingPanel.SetActive(false);
+        //    gameStartPanel.SetActive(true);
+        //}
     }
 
     //private void Update()
