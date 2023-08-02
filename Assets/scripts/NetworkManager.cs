@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject RespawnPanel;
     public GameObject loadingPanel;
     public GameObject gameStartPanel;
-    public GameObject gamecontrol;
+    public GameControll gameControl;
 
     public Text currentText;
     //public bool inGame;
@@ -49,6 +49,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         int maxTime = 300;
 
         RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = maxPlayers;
         roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "maxTime", maxTime } }; // 게임 시간 지정.
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "maxTime" }; // 여기에 키 값을 등록해야, 필터링이 가능하다.
 
@@ -95,17 +96,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
+            gameControl = FindObjectOfType<GameControll>();
+            gameControl._state = GameControll.State.Red;
+            if(PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+            {
+                loadingPanel.SetActive(false);
+                gameStartPanel.SetActive(true);
+            }
 
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)
-        {
-            PhotonNetwork.Disconnect();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)
+    //    {
+    //        PhotonNetwork.Disconnect();
+    //    }
+    //}
 
     public override void OnDisconnected(DisconnectCause cause)
     {
