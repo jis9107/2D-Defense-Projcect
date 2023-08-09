@@ -1270,7 +1270,7 @@ MonoBehaviour:
   RespawnPanel: {fileID: 240376129}
   loadingPanel: {fileID: 251561990}
   gameStartPanel: {fileID: 881052086}
-  gameControl: {fileID: 0}
+  gameControl: {fileID: 743088937}
   currentText: {fileID: 1928971722}
 --- !u!4 &142725539
 Transform:
