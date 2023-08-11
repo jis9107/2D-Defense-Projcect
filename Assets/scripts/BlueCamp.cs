@@ -7,13 +7,15 @@ using Photon.Realtime;
 
 public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public PhotonView pv;
     public Text nickNameText;
     public Image healthImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (pv.IsMine && !PhotonNetwork.IsMasterClient)
+            nickNameText.text = PhotonNetwork.NickName;
     }
 
     // Update is called once per frame

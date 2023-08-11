@@ -108,7 +108,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             gameControl = FindObjectOfType<GameControll>();
             gameControl._state = GameControll.State.Red;
-
         }
     }
 
