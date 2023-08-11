@@ -16,6 +16,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameControll gameControl;
 
     public Text currentText;
+    public Text redNick;
+    public Text blueNick;
+    
     //public bool inGame;
     //public float userMoney;
 
@@ -105,6 +108,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             gameControl = FindObjectOfType<GameControll>();
             gameControl._state = GameControll.State.Red;
+
         }
     }
 
