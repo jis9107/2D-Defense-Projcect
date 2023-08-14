@@ -117,9 +117,5 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(1.3f);
 
         isDamage = false;
-
-
-
-
     }
 }

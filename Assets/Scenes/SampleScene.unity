@@ -2603,6 +2603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 717257802}
   healthImage: {fileID: 1614069280}
+  box: {fileID: 717257797}
 --- !u!114 &717257801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,7 +2748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &881052087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3312,7 +3313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1201186037
 RectTransform:
   m_ObjectHideFlags: 0
