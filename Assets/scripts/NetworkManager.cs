@@ -81,8 +81,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         print("서버 접속 완료");
-        //PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
-        //PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 2 }, null);
     }
 
     public override void OnJoinedRoom()
@@ -91,24 +89,31 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         DisconnectPanel.SetActive(false);
         loadingPanel.SetActive(true);
-
         Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}은 인원수 {PhotonNetwork.CurrentRoom.MaxPlayers} 매칭 기다리는 중 ");
+
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            blueNick.text = PhotonNetwork.LocalPlayer.NickName;
+            redNick.text = PhotonNetwork.MasterClient.NickName;
+        }
+
         UpdatePlayerCounts();
-
-
-
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log($"플레이어 {newPlayer.NickName} 방 참가");
-        UpdatePlayerCounts();
 
         if (PhotonNetwork.IsMasterClient)
         {
             gameControl = FindObjectOfType<GameControll>();
             gameControl._state = GameControll.State.Red;
+            redNick.text = PhotonNetwork.LocalPlayer.NickName;
+            blueNick.text = newPlayer.NickName;
         }
+
+        UpdatePlayerCounts();
+
     }
 
     //private void Update()
