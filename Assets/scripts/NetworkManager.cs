@@ -73,8 +73,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
-            loadingPanel.SetActive(false);
-            gameStartPanel.SetActive(true);
+            currentText.text = "매칭 완료";
+            Invoke("GameStart", 2f);
         }
     }
 
@@ -132,6 +132,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void Spawn()
     {
         RespawnPanel.SetActive(false);
+    }
+
+    public void GameStart()
+    {
+        loadingPanel.SetActive(false);
+        gameStartPanel.SetActive(true);
     }
 }
 
