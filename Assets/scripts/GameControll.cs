@@ -105,7 +105,7 @@ public class GameControll : MonoBehaviourPunCallbacks
                 moneyText.text = _money.ToString();
             }
         }
-        if (winPanel || losePanel)
+        if (!winPanel || !losePanel)
         {
             gamestartPanel.SetActive(false);
         }
