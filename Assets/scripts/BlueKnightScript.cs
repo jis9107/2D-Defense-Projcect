@@ -80,6 +80,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     void DestoryRPC()
     {
         an.SetTrigger("die");
+        Destroy(gameObject, 0.2f);
     }
 
     IEnumerator Attack()
@@ -103,8 +104,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 if (curHealth <= 0)
                 {
                     StopAllCoroutines();
-                    pv.RPC("DestoryRPC", RpcTarget.All);
-                    Destroy(gameObject, 0.4f);
+                    pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
                 }
             }
 
