@@ -13,6 +13,8 @@ public class RedCamp : MonoBehaviour
 
     public BoxCollider2D box;
 
+    GameControll _gamecontrol;
+
     bool isDamage;
 
     // Start is called before the first frame update
@@ -36,6 +38,19 @@ public class RedCamp : MonoBehaviour
                 Weapon weapon = other.GetComponent<Weapon>();
                 healthImage.fillAmount -= weapon.damage / 100f;
                 StartCoroutine("OnDamage");
+
+                if (healthImage.fillAmount <= 0)
+                {
+                    _gamecontrol = FindObjectOfType<GameControll>();
+                    if (_gamecontrol._state == GameControll.State.Blue)
+                    {
+                        GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
+                    }
+                    if (_gamecontrol._state == GameControll.State.Red)
+                    {
+                        GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
+                    }
+                }
             }
 
         }

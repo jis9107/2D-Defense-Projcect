@@ -10,7 +10,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public InputField NickNameInput;
 
     public GameObject DisconnectPanel;
-    public GameObject RespawnPanel;
     public GameObject loadingPanel;
     public GameObject gameStartPanel;
     public GameControll gameControl;
@@ -128,10 +127,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(true);
         gameStartPanel.SetActive(false);
-    }
-    public void Spawn()
-    {
-        RespawnPanel.SetActive(false);
     }
 
     public void GameStart()
