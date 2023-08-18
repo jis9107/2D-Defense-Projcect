@@ -115,13 +115,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)
-    //    {
-    //        PhotonNetwork.Disconnect();
-    //    }
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)
+        {
+            ExitGame();
+        }
+    }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
@@ -133,6 +133,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         loadingPanel.SetActive(false);
         gameStartPanel.SetActive(true);
+    }
+
+    public void ExitGame()
+    {
+        PhotonNetwork.Disconnect();
     }
 }
 
