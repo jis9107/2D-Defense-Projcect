@@ -50,6 +50,7 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
                     }
+                    _gamecontrol.gamestartPanel.SetActive(false);
                 }
             }
 

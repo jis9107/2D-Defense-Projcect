@@ -17,8 +17,6 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     public GameObject panel;
     public GameObject gamestartPanel;
-    public GameObject winPanel;
-    public GameObject losePanel;
 
     public Text knightPrice;
     public Text soldierPrice;
@@ -104,10 +102,6 @@ public class GameControll : MonoBehaviourPunCallbacks
                 _money = (int)userMoney;
                 moneyText.text = _money.ToString();
             }
-        }
-        if (!winPanel || !losePanel)
-        {
-            gamestartPanel.SetActive(false);
         }
     }
 

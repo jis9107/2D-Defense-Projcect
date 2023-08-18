@@ -50,6 +50,7 @@ public class RedCamp : MonoBehaviour
                     {
                         GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
                     }
+                    _gamecontrol.gamestartPanel.SetActive(false);
                 }
             }
 
