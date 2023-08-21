@@ -58,19 +58,12 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(healthImage.fillAmount);
-        }
-        else
-        {
-            healthImage.fillAmount = (float)stream.ReceiveNext();
-        }
+
     }
     IEnumerator OnDamage()
     {
         isDamage = true;
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1f);
         isDamage = false;
     }
 

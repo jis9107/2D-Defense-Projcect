@@ -35,6 +35,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
+
+    }
+
+    void FixedUpdate()
+    {
         if (pv.IsMine)
         {
             if (isMove == true)
@@ -61,11 +66,6 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
-    }
-
-    void FixedUpdate()
-    {
-
     }
 
 

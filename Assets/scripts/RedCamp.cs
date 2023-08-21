@@ -70,7 +70,7 @@ public class RedCamp : MonoBehaviour
     IEnumerator OnDamage()
     {
         isDamage = true;
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1f);
         isDamage = false;
     }
 }
