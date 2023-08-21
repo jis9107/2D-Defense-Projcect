@@ -17,11 +17,10 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     bool isMove;
     bool isDamage;
 
+    Vector3 curPos;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
 
-    }
+
 
     void Awake()
     {
@@ -36,32 +35,37 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-
+        if (pv.IsMine)
+        {
+            if (isMove == true)
+            {
+                an.SetBool("walk", true);
+                Move();
+            }
+            else
+                an.SetBool("walk", false);
+            Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.left * 0.7f), Vector2.left * 0.1f, new Color(1, 0, 0));
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.1f);
+            if (hit.collider == null)
+                isMove = true;
+            else if (hit.collider.tag == "Red")
+            {
+                isMove = false;
+                pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                StartCoroutine(Attack());
+            }
+            else
+            {
+                isMove = false;
+            }
+        }
+        else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
+        else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
     }
 
     void FixedUpdate()
     {
-        if (isMove == true)
-        {
-            an.SetBool("walk", true);
-            Move();
-        }
-        else
-            an.SetBool("walk", false);
-        Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.left * 0.7f), Vector2.left * 0.1f, new Color(1, 0, 0));
-        RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.1f);
-        if (hit.collider == null)
-            isMove = true;
-        else if (hit.collider.tag == "Red")
-        {
-            isMove = false;
-            pv.RPC("AttackRPC", RpcTarget.All);
-            StartCoroutine(Attack());
-        }
-        else
-        {
-            isMove = false;
-        }
+        
     }
 
 
@@ -117,5 +121,17 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(1.3f);
 
         isDamage = false;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(transform.position);
+        }
+        else
+        {
+            curPos = (Vector3)stream.ReceiveNext();
+        }
     }
 }

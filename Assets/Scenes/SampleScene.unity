@@ -1269,8 +1269,6 @@ MonoBehaviour:
   DisconnectPanel: {fileID: 1201186036}
   loadingPanel: {fileID: 251561990}
   gameStartPanel: {fileID: 881052086}
-  winPanel: {fileID: 240376129}
-  losePanel: {fileID: 408894682}
   gameControl: {fileID: 743088937}
   currentText: {fileID: 1928971722}
   redNick: {fileID: 114027464}
