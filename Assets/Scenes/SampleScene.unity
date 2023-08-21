@@ -2563,7 +2563,6 @@ GameObject:
   - component: {fileID: 717257798}
   - component: {fileID: 717257797}
   - component: {fileID: 717257802}
-  - component: {fileID: 717257801}
   - component: {fileID: 717257800}
   m_Layer: 9
   m_Name: BlueBase
@@ -2676,32 +2675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbf277393a37534196449e0fbea2a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 717257802}
   healthImage: {fileID: 1614069280}
   box: {fileID: 717257797}
---- !u!114 &717257801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717257796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 717257800}
-  sceneViewId: 3
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &717257802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2754,7 +2729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436262f526e7b284aa095d955e4078ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _state: 1
+  _state: 0
   panel: {fileID: 1201186036}
   gamestartPanel: {fileID: 881052086}
   knightPrice: {fileID: 1154355569}
@@ -2990,8 +2965,8 @@ GameObject:
   - component: {fileID: 1024301528}
   - component: {fileID: 1024301527}
   - component: {fileID: 1024301526}
-  - component: {fileID: 1024301529}
   - component: {fileID: 1024301530}
+  - component: {fileID: 1024301529}
   m_Layer: 8
   m_Name: RedBase
   m_TagString: Red
@@ -3103,7 +3078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0570bc281f6b9a41962a1fa78b7987d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 1024301530}
   healthImage: {fileID: 666027245}
   box: {fileID: 1024301526}
 --- !u!114 &1024301530

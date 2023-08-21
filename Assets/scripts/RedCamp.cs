@@ -7,7 +7,6 @@ using Photon.Realtime;
 
 public class RedCamp : MonoBehaviour
 {
-    public PhotonView pv;
 
     public Image healthImage;
 
@@ -58,14 +57,7 @@ public class RedCamp : MonoBehaviour
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(healthImage.fillAmount);
-        }
-        else
-        {
-            healthImage.fillAmount = (float)stream.ReceiveNext();
-        }
+
     }
     IEnumerator OnDamage()
     {
