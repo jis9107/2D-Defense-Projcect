@@ -89,9 +89,9 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         meleeArea.enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         meleeArea.enabled = false;
     }
 

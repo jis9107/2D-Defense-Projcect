@@ -7,6 +7,7 @@ using Photon.Realtime;
 
 public class RedCamp : MonoBehaviour
 {
+    public PhotonView pv;
 
     public Image healthImage;
 

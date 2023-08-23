@@ -7,8 +7,8 @@ using Photon.Realtime;
 
 public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
 {
-    //public PhotonView pv;
-    
+    public PhotonView pv;
+
     public Image healthImage;
 
     public BoxCollider2D box;

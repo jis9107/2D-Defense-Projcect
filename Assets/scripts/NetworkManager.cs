@@ -17,7 +17,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Text currentText;
     public Text redNick;
     public Text blueNick;
-    
+
     //public bool inGame;
     //public float userMoney;
 
@@ -92,6 +92,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (!PhotonNetwork.IsMasterClient)
         {
+            gameControl = FindObjectOfType<GameControll>();
+            gameControl._state = GameControll.State.Blue;
             blueNick.text = PhotonNetwork.LocalPlayer.NickName;
             redNick.text = PhotonNetwork.MasterClient.NickName;
         }
@@ -134,7 +136,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         loadingPanel.SetActive(false);
         gameStartPanel.SetActive(true);
     }
-
     public void ExitGame()
     {
         PhotonNetwork.Disconnect();
