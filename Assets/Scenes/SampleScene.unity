@@ -1676,6 +1676,8 @@ RectTransform:
   - {fileID: 240376130}
   - {fileID: 881052087}
   - {fileID: 251561991}
+  - {fileID: 1024301528}
+  - {fileID: 717257799}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2570,7 +2572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &717257797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2660,8 +2662,8 @@ Transform:
   m_Children:
   - {fileID: 797902533}
   - {fileID: 666027244}
-  m_Father: {fileID: 881052087}
-  m_RootOrder: 5
+  m_Father: {fileID: 243753451}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &717257800
 MonoBehaviour:
@@ -2675,8 +2677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbf277393a37534196449e0fbea2a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 0}
-  healthImage: {fileID: 0}
+  pv: {fileID: 717257802}
+  healthImage: {fileID: 666027245}
   box: {fileID: 717257797}
 --- !u!114 &717257802
 MonoBehaviour:
@@ -2804,7 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.3296814, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2893,8 +2895,6 @@ RectTransform:
   - {fileID: 649773530}
   - {fileID: 48534031}
   - {fileID: 1175887124}
-  - {fileID: 1024301528}
-  - {fileID: 717257799}
   m_Father: {fileID: 243753451}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3052,7 +3052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1024301526
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3142,8 +3142,8 @@ Transform:
   m_Children:
   - {fileID: 114027463}
   - {fileID: 1594459712}
-  m_Father: {fileID: 881052087}
-  m_RootOrder: 4
+  m_Father: {fileID: 243753451}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1024301529
 MonoBehaviour:
@@ -3157,8 +3157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0570bc281f6b9a41962a1fa78b7987d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 0}
-  healthImage: {fileID: 666027245}
+  pv: {fileID: 1024301530}
+  healthImage: {fileID: 1594459713}
   box: {fileID: 1024301526}
 --- !u!114 &1024301530
 MonoBehaviour:
