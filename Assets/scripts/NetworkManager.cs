@@ -12,6 +12,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject loadingPanel;
     public GameObject gameStartPanel;
+    public GameObject redBase;
+    public GameObject blueBase;
+
     public GameControll gameControl;
 
     public Text currentText;
@@ -92,10 +95,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (!PhotonNetwork.IsMasterClient)
         {
-            gameControl = FindObjectOfType<GameControll>();
-            gameControl._state = GameControll.State.Blue;
-            blueNick.text = PhotonNetwork.LocalPlayer.NickName;
-            redNick.text = PhotonNetwork.MasterClient.NickName;
+            //gameControl = FindObjectOfType<GameControll>();
+            //gameControl._state = GameControll.State.Blue;
+            //blueNick.text = PhotonNetwork.LocalPlayer.NickName;
+            //redNick.text = PhotonNetwork.MasterClient.NickName;
+            PhotonNetwork.Instantiate("BlueBase", new Vector3(8.19f, -0.709f, 0), Quaternion.Euler(0, 0, 0));
         }
 
         UpdatePlayerCounts();
@@ -107,10 +111,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            gameControl = FindObjectOfType<GameControll>();
-            gameControl._state = GameControll.State.Red;
-            redNick.text = PhotonNetwork.LocalPlayer.NickName;
-            blueNick.text = newPlayer.NickName;
+            //gameControl = FindObjectOfType<GameControll>();
+            //gameControl._state = GameControll.State.Red;
+            //redNick.text = PhotonNetwork.LocalPlayer.NickName;
+            //blueNick.text = newPlayer.NickName;
+            PhotonNetwork.Instantiate("RedBase", new Vector3(-8.09f, -0.72f, 0), Quaternion.Euler(0, 0, 0));
         }
 
         UpdatePlayerCounts();

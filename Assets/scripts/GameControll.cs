@@ -44,12 +44,12 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _knightPrice = int.Parse(knightPrice.text);
         if(userMoney >= _knightPrice)
         {
-            if(_state == State.Red)
+            if(PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _knightPrice;
             }
-            if(_state == State.Blue)
+            if(!PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("BlueKnight", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _knightPrice;
