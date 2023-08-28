@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1013230841}
   - component: {fileID: 1013230840}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,10 +65,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: dc2e2f27cab38d440b9550f3e96e54dd, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1621496968}
   - component: {fileID: 1621496967}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NickName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: aaa
+  m_Text: 
 --- !u!1 &1640702806
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,5 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 3070766296768821356}
-  healthImage: {fileID: 0}
+  healthImage: {fileID: 1013230840}
+  nickName: {fileID: 1621496967}
   box: {fileID: 3070766296768821344}
+  sr: {fileID: 3070766296768821345}

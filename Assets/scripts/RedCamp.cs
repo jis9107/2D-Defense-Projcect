@@ -11,7 +11,10 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
 
     public Image healthImage;
 
+    public Text nickName;
+
     public BoxCollider2D box;
+    public SpriteRenderer sr;
 
     GameControll _gamecontrol;
 
@@ -20,7 +23,7 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-
+        nickName.text = PhotonNetwork.NickName;
     }
 
     // Update is called once per frame
