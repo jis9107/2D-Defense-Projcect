@@ -24,7 +24,11 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        nickName.text = PhotonNetwork.NickName;
+        _gamecontrol = FindObjectOfType<GameControll>();
+        if (_gamecontrol._state == GameControll.State.Blue)
+            nickName.text = PhotonNetwork.NickName;
+        if (_gamecontrol._state == GameControll.State.Red)
+            nickName.text = pv.Owner.NickName;
     }
 
     // Update is called once per frame
@@ -62,7 +66,14 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-
+        if (stream.IsWriting)
+        {
+            stream.SendNext(healthImage.fillAmount);
+        }
+        else
+        {
+            healthImage.fillAmount = (float)stream.ReceiveNext();
+        }
     }
     IEnumerator OnDamage()
     {

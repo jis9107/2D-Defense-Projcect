@@ -95,8 +95,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (!PhotonNetwork.IsMasterClient)
         {
-            //gameControl = FindObjectOfType<GameControll>();
-            //gameControl._state = GameControll.State.Blue;
+            gameControl = FindObjectOfType<GameControll>();
+            gameControl._state = GameControll.State.Blue;
             //blueNick.text = PhotonNetwork.LocalPlayer.NickName;
             //redNick.text = PhotonNetwork.MasterClient.NickName;
             PhotonNetwork.Instantiate("BlueBase", new Vector3(8.19f, -0.709f, 0), Quaternion.Euler(0, 0, 0));
@@ -111,8 +111,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            //gameControl = FindObjectOfType<GameControll>();
-            //gameControl._state = GameControll.State.Red;
+            gameControl = FindObjectOfType<GameControll>();
+            gameControl._state = GameControll.State.Red;
             //redNick.text = PhotonNetwork.LocalPlayer.NickName;
             //blueNick.text = newPlayer.NickName;
             PhotonNetwork.Instantiate("RedBase", new Vector3(-8.09f, -0.72f, 0), Quaternion.Euler(0, 0, 0));

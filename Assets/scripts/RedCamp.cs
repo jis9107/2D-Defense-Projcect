@@ -65,7 +65,14 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-
+        if (stream.IsWriting)
+        {
+            stream.SendNext(healthImage.fillAmount);
+        }
+        else
+        {
+            healthImage.fillAmount = (float)stream.ReceiveNext();
+        }
     }
     IEnumerator OnDamage()
     {
