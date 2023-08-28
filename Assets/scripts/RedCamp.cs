@@ -23,7 +23,11 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        nickName.text = PhotonNetwork.NickName;
+        _gamecontrol = FindObjectOfType<GameControll>();
+        if (_gamecontrol._state == GameControll.State.Red)
+            nickName.text = PhotonNetwork.NickName;
+        if (_gamecontrol._state == GameControll.State.Blue)
+            nickName.text = pv.Owner.NickName;
     }
 
     // Update is called once per frame
