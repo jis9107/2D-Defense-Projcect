@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RedCamp : MonoBehaviour
+public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
 {
     public PhotonView pv;
 
