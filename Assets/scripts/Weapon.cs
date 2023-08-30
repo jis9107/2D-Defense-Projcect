@@ -4,8 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public PhotonView pv;
+
     public enum Type
     {
         Knight,

@@ -19,9 +19,6 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     Vector3 curPos;
 
-
-
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

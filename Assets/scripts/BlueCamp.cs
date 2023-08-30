@@ -41,7 +41,7 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (other.tag == "RedMelee")
         {
-            if (!isDamage)
+            if (isDamage == false)
             {
                 Weapon weapon = other.GetComponent<Weapon>();
                 healthImage.fillAmount -= weapon.damage / 100f;
@@ -68,11 +68,11 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(healthImage.fillAmount);
+            healthImage.fillAmount = (float)stream.ReceiveNext();
         }
         else
         {
-            healthImage.fillAmount = (float)stream.ReceiveNext();
+            stream.SendNext(healthImage.fillAmount);
         }
     }
     IEnumerator OnDamage()
@@ -81,5 +81,6 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(1f);
         isDamage = false;
     }
+
 
 }
