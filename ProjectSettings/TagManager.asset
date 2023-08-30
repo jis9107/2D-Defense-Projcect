@@ -8,6 +8,8 @@ TagManager:
   - Blue
   - RedMelee
   - BlueMelee
+  - BlueCamp
+  - RedCamp
   layers:
   - Default
   - TransparentFX

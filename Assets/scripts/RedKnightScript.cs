@@ -54,7 +54,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                StartCoroutine(Attack());
+                //StartCoroutine(Attack());
             }
             else
             {
@@ -134,6 +134,8 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             curPos = (Vector3)stream.ReceiveNext();
         }
     }
+
+
 
 
 

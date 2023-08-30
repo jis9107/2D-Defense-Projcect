@@ -38,40 +38,43 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "BlueMelee")
+        if (pv.IsMine)
         {
-            if (isDamage == false)
+            if (other.tag == "BlueMelee")
             {
-                Weapon weapon = other.GetComponent<Weapon>();
-                healthImage.fillAmount -= weapon.damage / 100f;
-                StartCoroutine("OnDamage");
-
-                if (healthImage.fillAmount <= 0)
+                if (isDamage == false)
                 {
-                    _gamecontrol = FindObjectOfType<GameControll>();
-                    if (_gamecontrol._state == GameControll.State.Blue)
-                    {
-                        GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
-                    }
-                    if (_gamecontrol._state == GameControll.State.Red)
-                    {
-                        GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
-                    }
-                    _gamecontrol.gamestartPanel.SetActive(false);
-                }
-            }
+                    Weapon weapon = other.GetComponent<Weapon>();
+                    healthImage.fillAmount -= weapon.damage / 100f;
+                    StartCoroutine("OnDamage");
 
+                    if (healthImage.fillAmount <= 0)
+                    {
+                        _gamecontrol = FindObjectOfType<GameControll>();
+                        if (_gamecontrol._state == GameControll.State.Blue)
+                        {
+                            GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
+                        }
+                        if (_gamecontrol._state == GameControll.State.Red)
+                        {
+                            GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
+                        }
+                        _gamecontrol.gamestartPanel.SetActive(false);
+                    }
+                }
+
+            }
         }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-            healthImage.fillAmount = (float)stream.ReceiveNext();
+            stream.SendNext(healthImage.fillAmount);
         }
         else
         {
-            stream.SendNext(healthImage.fillAmount);
+            healthImage.fillAmount = (float)stream.ReceiveNext();
         }
     }
     IEnumerator OnDamage()
@@ -79,6 +82,22 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
         isDamage = true;
         yield return new WaitForSeconds(0.8f);
         isDamage = false;
+    }
+
+    public void Hit()
+    {
+        healthImage.fillAmount -= 0.1f;
+        if (healthImage.fillAmount <= 0)
+        {
+
+            pv.RPC("DestroyRPC", RpcTarget.AllBuffered); // AllBuffered로 해야 제대로 사라져 복제버그가 안 생긴다
+        }
+    }
+
+    [PunRPC]
+    void DestroyRPC()
+    {
+        Destroy(this.gameObject);
     }
 
 }

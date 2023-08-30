@@ -57,7 +57,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                StartCoroutine(Attack());
+                //StartCoroutine(Attack());
             }
             else
             {
