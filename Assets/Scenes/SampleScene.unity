@@ -2433,6 +2433,8 @@ MonoBehaviour:
   _state: 0
   panel: {fileID: 1201186036}
   gamestartPanel: {fileID: 881052086}
+  redWinPanel: {fileID: 408894682}
+  blueWinPanel: {fileID: 240376129}
   knightPrice: {fileID: 1154355569}
   soldierPrice: {fileID: 2094478089}
   thiefPrice: {fileID: 1225278906}
@@ -3007,7 +3009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1201186037
 RectTransform:
   m_ObjectHideFlags: 0
