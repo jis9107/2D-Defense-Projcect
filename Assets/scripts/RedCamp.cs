@@ -76,11 +76,6 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             healthImage.fillAmount = (float)stream.ReceiveNext();
-            if (healthImage.fillAmount <= 0)
-            {
-                _gamecontrol = FindObjectOfType<GameControll>();
-                _gamecontrol.BlueWin();
-            }
         }
     }
     IEnumerator OnDamage()
