@@ -11,6 +11,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer sr;
     public PhotonView pv;
     public BoxCollider2D meleeArea;
+    public GameControll _game;
 
     public int curHealth;
 
@@ -23,6 +24,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+        _game = GetComponent<GameControll>();
     }
 
     void Start()
@@ -106,12 +108,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 if (curHealth <= 0)
                 {
                     StopAllCoroutines();
+
+
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-                    if (!pv.IsMine)
-                    {
-                        GameControll _gamecontrol = GetComponent<GameControll>();
-                        _gamecontrol._money += 5;
-                    }
+                    pv.RPC("DiePRC", RpcTarget.AllBuffered);
+                    
 
                 }
 
@@ -138,6 +139,12 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         {
             curPos = (Vector3)stream.ReceiveNext();
         }
+    }
+
+    [PunRPC]
+    void DieRPC()
+    {
+        _game.KillRed(5);
     }
 
 

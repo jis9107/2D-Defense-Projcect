@@ -121,4 +121,52 @@ public class GameControll : MonoBehaviourPunCallbacks
         blueWinPanel.SetActive(true);
     }
 
+    public void KillRed(int money)
+    {
+        if (_state == State.Blue)
+        {
+            switch (money)
+            {
+                case 5:
+                    userMoney += 5f;
+                    break;
+
+                case 10:
+                    userMoney += 10f;
+                    break;
+
+                case 15:
+                    userMoney += 15f;
+                    break;
+
+            }
+        }
+        else
+            return;
+    }
+
+    public void KillBlue(int money)
+    {
+        if (_state == State.Red)
+        {
+            switch (money)
+            {
+                case 5:
+                    userMoney += 5f;
+                    break;
+
+                case 10:
+                    userMoney += 10f;
+                    break;
+
+                case 15:
+                    userMoney += 15f;
+                    break;
+
+            }
+        }
+        else
+            return;
+    }
+
 }

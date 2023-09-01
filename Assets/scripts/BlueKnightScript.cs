@@ -107,8 +107,12 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
                 if (curHealth <= 0)
                 {
+                    //GameControll _gamecontrol = GetComponent<GameControll>();
+                    //_gamecontrol.KillBlue(5);
+
                     StopAllCoroutines();
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
+
                 }
             }
 
