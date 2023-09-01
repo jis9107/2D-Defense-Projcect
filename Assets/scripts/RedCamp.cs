@@ -49,9 +49,9 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
 
                     if (healthImage.fillAmount <= 0)
                     {
-                        pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
-                        _gamecontrol = FindObjectOfType<GameControll>();
-                        _gamecontrol.BlueWin();
+                        pv.RPC("BlueTeamWin", RpcTarget.AllBuffered);
+                        //_gamecontrol = FindObjectOfType<GameControll>();
+                        //_gamecontrol.BlueWin();
                         //if (_gamecontrol._state == GameControll.State.Blue)
                         //{
                         //    GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
@@ -85,20 +85,21 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
         isDamage = false;
     }
 
-    public void Hit()
-    {
-        healthImage.fillAmount -= 0.1f;
-        if (healthImage.fillAmount <= 0)
-        {
+    //public void Hit()
+    //{
+    //    healthImage.fillAmount -= 0.1f;
+    //    if (healthImage.fillAmount <= 0)
+    //    {
 
-            pv.RPC("DestroyRPC", RpcTarget.AllBuffered); // AllBuffered로 해야 제대로 사라져 복제버그가 안 생긴다
-        }
-    }
+    //        pv.RPC("DestroyRPC", RpcTarget.AllBuffered); // AllBuffered로 해야 제대로 사라져 복제버그가 안 생긴다
+    //    }
+    //}
 
     [PunRPC]
-    void DestroyRPC()
+    void BlueTeamWin()
     {
         Destroy(this.gameObject);
+        GameObject.Find("Canvas").transform.Find("RedWinPanel").gameObject.SetActive(true);
     }
 
 }
