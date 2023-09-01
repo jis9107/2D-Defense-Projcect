@@ -39,8 +39,6 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (pv.IsMine)
-        {
             if (other.tag == "RedMelee")
             {
                 if (isDamage == false)
@@ -67,7 +65,7 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
                 }
 
             }
-        }
+        
 
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

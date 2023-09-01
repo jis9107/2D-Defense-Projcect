@@ -107,11 +107,14 @@ public class GameControll : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
     public void RedWin()
     {
         gamestartPanel.SetActive(false);
         redWinPanel.SetActive(true);
     }
+
+    [PunRPC]
     public void BlueWin()
     {
         gamestartPanel.SetActive(false);
