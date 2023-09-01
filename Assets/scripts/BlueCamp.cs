@@ -50,8 +50,7 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
                     if (healthImage.fillAmount <= 0)
                     {
                         pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
-                        _gamecontrol = FindObjectOfType<GameControll>();
-                        _gamecontrol.RedWin();
+                        pv.RPC("RedTeamWin", RpcTarget.AllBuffered);
                         //if (_gamecontrol._state == GameControll.State.Blue)
                         //{
                         //    GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
@@ -96,9 +95,10 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void DestroyRPC()
+    void RedTeamWin()
     {
-        Destroy(this.gameObject);
+        _gamecontrol = FindObjectOfType<GameControll>();
+        _gamecontrol.RedWin();
     }
 
 

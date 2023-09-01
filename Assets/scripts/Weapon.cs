@@ -39,4 +39,30 @@ public class Weapon : MonoBehaviourPunCallbacks, IPunObservable
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (pv.IsMine)
+        {
+            if(other.tag == "BlueCamp")
+            {
+                float enemyhealth = other.gameObject.GetComponent<BlueCamp>().healthImage.fillAmount;
+                if(enemyhealth <= 0)
+                {
+                    GameControll _gamecontrol = FindObjectOfType<GameControll>();
+                    _gamecontrol.RedWin();
+                }
+            }
+
+            if(other.tag == "RedCamp")
+            {
+                float enemyhealth = other.gameObject.GetComponent<RedCamp>().healthImage.fillAmount;
+                if (enemyhealth <= 0)
+                {
+                    GameControll _gamecontrol = FindObjectOfType<GameControll>();
+                    _gamecontrol.BlueWin();
+                }
+            }
+        }
+    }
 }
