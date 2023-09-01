@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1877171199233873053}
   m_Layer: 9
   m_Name: BlueBase
-  m_TagString: Blue
+  m_TagString: BlueCamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

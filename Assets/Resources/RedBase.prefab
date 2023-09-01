@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 3070766296768821359}
   m_Layer: 8
   m_Name: RedBase
-  m_TagString: Red
+  m_TagString: RedCamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
