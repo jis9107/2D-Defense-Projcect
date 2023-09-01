@@ -29,7 +29,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     public Transform blueSpawn;
 
     public float userMoney;
-    int _money;
+    public int _money;
     bool inGame;
 
     private void Awake()

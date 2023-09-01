@@ -107,6 +107,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     StopAllCoroutines();
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
+                    if (!pv.IsMine)
+                    {
+                        GameControll _gamecontrol = GetComponent<GameControll>();
+                        _gamecontrol._money += 5;
+                    }
 
                 }
 
