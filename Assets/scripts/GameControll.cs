@@ -28,7 +28,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     public Transform redSpawn;
     public Transform blueSpawn;
 
-    public float userMoney;
+    public int userMoney;
     public float redCountMoney;
     public float blueCountMoney;
     public int _money;
@@ -38,6 +38,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     private void Awake()
     {
         inGame = false;
+        userMoney = 20;
     }
 
     private void Start()
@@ -104,9 +105,12 @@ public class GameControll : MonoBehaviourPunCallbacks
             inGame = true;
             if(inGame == true)
             {
-                userMoney = 20;
-                _money = (int)userMoney;
-                moneyText.text = _money.ToString();
+                //userMoney = Time.deltaTime;
+                //_money = (int)userMoney;
+                //moneyText.text = _money.ToString();
+              
+                
+                moneyText.text = userMoney.ToString();
             }
         }
     }
@@ -125,41 +129,41 @@ public class GameControll : MonoBehaviourPunCallbacks
         blueWinPanel.SetActive(true);
     }
 
-    public void KillRed(int money)
-    {
-        switch (money)
-        {
-            case 5:
-                userMoney += 5f;
-                break;
+    //public void KillRed(int money)
+    //{
+    //    switch (money)
+    //    {
+    //        case 5:
+    //            userMoney += 5f;
+    //            break;
 
-            case 10:
-                userMoney += 10f;
-                break;
+    //        case 10:
+    //            userMoney += 10f;
+    //            break;
 
-            case 15:
-                userMoney += 15f;
-                break;
+    //        case 15:
+    //            userMoney += 15f;
+    //            break;
 
-        }
-    }
-    public void KillBlue(int money)
-    {
-        switch (money)
-        {
-            case 5:
-                userMoney += 5f;
-                break;
+    //    }
+    //}
+    //public void KillBlue(int money)
+    //{
+    //    switch (money)
+    //    {
+    //        case 5:
+    //            userMoney += 5f;
+    //            break;
 
-            case 10:
-                userMoney += 10f;
-                break;
+    //        case 10:
+    //            userMoney += 10f;
+    //            break;
 
-            case 15:
-                userMoney += 15f;
-                break;
+    //        case 15:
+    //            userMoney += 15f;
+    //            break;
 
-        }
-    }
+    //    }
+    //}
 
 }

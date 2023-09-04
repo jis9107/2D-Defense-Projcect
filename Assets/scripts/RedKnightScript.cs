@@ -100,7 +100,6 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             if (!isDamage)
             {
                 Weapon weapon = other.GetComponent<Weapon>();
-                GameControll _game = other.gameObject.GetComponentInParent<GameControll>();
                 curHealth -= weapon.damage;
                 StartCoroutine("OnDamage");
 
@@ -109,7 +108,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                     StopAllCoroutines();
 
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-                    Debug.Log(_game.userMoney);
+                    if (!PhotonNetwork.IsMasterClient)
+                    {
+                        GameControll _game = GetComponent<GameControll>();
+                        _game.userMoney += 5;
+                    }
                 }
 
             }

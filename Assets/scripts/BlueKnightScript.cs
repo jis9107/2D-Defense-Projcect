@@ -115,6 +115,12 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                     StopAllCoroutines();
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
 
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        GameControll _game = GetComponent<GameControll>();
+                        _game.userMoney += 5;
+                    }
+
                 }
             }
 
