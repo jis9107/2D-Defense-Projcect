@@ -53,7 +53,6 @@ public class GameControll : MonoBehaviourPunCallbacks
             {
                 PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _knightPrice;
-                redCountMoney += 5;
             }
             if(!PhotonNetwork.IsMasterClient)
             {
@@ -126,34 +125,41 @@ public class GameControll : MonoBehaviourPunCallbacks
         blueWinPanel.SetActive(true);
     }
 
-    public void KillRed()
+    public void KillRed(int money)
     {
-        userMoney += redCountMoney;
-        redCountMoney = 0;
-    }
+        switch (money)
+        {
+            case 5:
+                userMoney += 5f;
+                break;
 
+            case 10:
+                userMoney += 10f;
+                break;
+
+            case 15:
+                userMoney += 15f;
+                break;
+
+        }
+    }
     public void KillBlue(int money)
     {
-        if (PhotonNetwork.IsMasterClient)
+        switch (money)
         {
-            switch (money)
-            {
-                case 5:
-                    userMoney += 5f;
-                    break;
+            case 5:
+                userMoney += 5f;
+                break;
 
-                case 10:
-                    userMoney += 10f;
-                    break;
+            case 10:
+                userMoney += 10f;
+                break;
 
-                case 15:
-                    userMoney += 15f;
-                    break;
+            case 15:
+                userMoney += 15f;
+                break;
 
-            }
         }
-        else
-            return;
     }
 
 }
