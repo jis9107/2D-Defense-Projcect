@@ -104,7 +104,7 @@ public class GameControll : MonoBehaviourPunCallbacks
             inGame = true;
             if(inGame == true)
             {
-                userMoney += Time.deltaTime;
+                userMoney = 20;
                 _money = (int)userMoney;
                 moneyText.text = _money.ToString();
             }

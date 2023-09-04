@@ -109,7 +109,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                     StopAllCoroutines();
 
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-                    _game.userMoney += 5;
+                    Debug.Log(_game.userMoney);
                 }
 
             }

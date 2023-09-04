@@ -626,7 +626,6 @@ MonoBehaviour:
   sr: {fileID: 9033980577547507640}
   pv: {fileID: 9033980577547507638}
   meleeArea: {fileID: 683705671}
-  _game: {fileID: 0}
   curHealth: 30
 --- !u!1 &9033280742654033398
 GameObject:
