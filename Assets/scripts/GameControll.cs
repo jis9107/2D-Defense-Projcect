@@ -29,8 +29,11 @@ public class GameControll : MonoBehaviourPunCallbacks
     public Transform blueSpawn;
 
     public float userMoney;
+    public float redCountMoney;
+    public float blueCountMoney;
     public int _money;
     bool inGame;
+
 
     private void Awake()
     {
@@ -50,11 +53,13 @@ public class GameControll : MonoBehaviourPunCallbacks
             {
                 PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _knightPrice;
+                redCountMoney += 5;
             }
             if(!PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("BlueKnight", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _knightPrice;
+                blueCountMoney += 5;
             }
         }
     }
@@ -121,33 +126,15 @@ public class GameControll : MonoBehaviourPunCallbacks
         blueWinPanel.SetActive(true);
     }
 
-    public void KillRed(int money)
+    public void KillRed()
     {
-        if (_state == State.Blue)
-        {
-            switch (money)
-            {
-                case 5:
-                    userMoney += 5f;
-                    break;
-
-                case 10:
-                    userMoney += 10f;
-                    break;
-
-                case 15:
-                    userMoney += 15f;
-                    break;
-
-            }
-        }
-        else
-            return;
+        userMoney += redCountMoney;
+        redCountMoney = 0;
     }
 
     public void KillBlue(int money)
     {
-        if (_state == State.Red)
+        if (PhotonNetwork.IsMasterClient)
         {
             switch (money)
             {

@@ -109,11 +109,8 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     StopAllCoroutines();
 
-
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-                    pv.RPC("DiePRC", RpcTarget.AllBuffered);
-                    
-
+                    pv.RPC("DiePRC", RpcTarget.Others);
                 }
 
             }
@@ -144,7 +141,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void DieRPC()
     {
-        _game.KillRed(5);
+        _game.userMoney += 5;
     }
 
 

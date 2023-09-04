@@ -11,6 +11,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer sr;
     public PhotonView pv;
     public BoxCollider2D meleeArea;
+    public GameControll _game;
 
     public int curHealth;
 
@@ -26,6 +27,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+        _game = GetComponent<GameControll>();
     }
 
     void Start()
