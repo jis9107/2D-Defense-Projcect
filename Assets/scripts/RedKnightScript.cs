@@ -11,7 +11,6 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer sr;
     public PhotonView pv;
     public BoxCollider2D meleeArea;
-    public GameControll _game;
 
     public int curHealth;
 
@@ -107,14 +106,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                 if (curHealth <= 0)
                 {
                     StopAllCoroutines();
-
-
                     pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-
-                    if (!PhotonNetwork.IsMasterClient)
-                    {
-                        _game.userMoney += 5;
-                    }
                 }
 
             }

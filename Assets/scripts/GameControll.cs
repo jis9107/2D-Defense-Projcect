@@ -29,9 +29,6 @@ public class GameControll : MonoBehaviourPunCallbacks
     public Transform blueSpawn;
 
     public int userMoney;
-    public float redCountMoney;
-    public float blueCountMoney;
-    public int _money;
     bool inGame;
 
 
@@ -104,11 +101,6 @@ public class GameControll : MonoBehaviourPunCallbacks
             inGame = true;
             if(inGame == true)
             {
-                //userMoney = Time.deltaTime;
-                //_money = (int)userMoney;
-                //moneyText.text = _money.ToString();
-              
-                
                 moneyText.text = userMoney.ToString();
             }
         }
@@ -127,42 +119,5 @@ public class GameControll : MonoBehaviourPunCallbacks
         gamestartPanel.SetActive(false);
         blueWinPanel.SetActive(true);
     }
-
-    //public void KillRed(int money)
-    //{
-    //    switch (money)
-    //    {
-    //        case 5:
-    //            userMoney += 5f;
-    //            break;
-
-    //        case 10:
-    //            userMoney += 10f;
-    //            break;
-
-    //        case 15:
-    //            userMoney += 15f;
-    //            break;
-
-    //    }
-    //}
-    //public void KillBlue(int money)
-    //{
-    //    switch (money)
-    //    {
-    //        case 5:
-    //            userMoney += 5f;
-    //            break;
-
-    //        case 10:
-    //            userMoney += 10f;
-    //            break;
-
-    //        case 15:
-    //            userMoney += 15f;
-    //            break;
-
-    //    }
-    //}
 
 }
