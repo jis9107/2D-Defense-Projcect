@@ -59,7 +59,6 @@ public class GameControll : MonoBehaviourPunCallbacks
             {
                 PhotonNetwork.Instantiate("BlueKnight", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _knightPrice;
-                blueCountMoney += 5;
             }
         }
     }

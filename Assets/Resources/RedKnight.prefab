@@ -393,7 +393,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2217789386343517502}
-  sceneViewId: 0
+  sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &9033280742241102028
@@ -606,7 +606,7 @@ MonoBehaviour:
   - {fileID: 9033980577547507642}
   - {fileID: 9033980577547507637}
   - {fileID: -3474170372064257231}
-  sceneViewId: 0
+  sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &-3474170372064257231
@@ -626,6 +626,7 @@ MonoBehaviour:
   sr: {fileID: 9033980577547507640}
   pv: {fileID: 9033980577547507638}
   meleeArea: {fileID: 683705671}
+  _game: {fileID: 0}
   curHealth: 30
 --- !u!1 &9033280742654033398
 GameObject:
