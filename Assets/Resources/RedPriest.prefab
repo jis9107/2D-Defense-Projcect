@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509532906899317}
   - component: {fileID: 1149057210514859089}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509529901628185}
   - component: {fileID: 1149057208272369657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Back arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509531157450643}
   - component: {fileID: 1149057209921936681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Back leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509532322053359}
   - component: {fileID: 1149057207622479225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509531239316161}
   - component: {fileID: 1149057208518844947}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Front arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509530861602199}
   - component: {fileID: 1149057208469093993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Front leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,9 +508,9 @@ GameObject:
   - component: {fileID: 937709223772855517}
   - component: {fileID: 937709223772855514}
   - component: {fileID: 7279681205159538706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedPriest
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -713,7 +713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940509532389662529}
   - component: {fileID: 1149057206845188207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
