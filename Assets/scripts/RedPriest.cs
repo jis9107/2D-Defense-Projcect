@@ -50,7 +50,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.3f, new Color(1, 0, 0));
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.3f);
-            if (hit.collider == null)
+            if (hit.collider == null || hit.collider.tag == "Red")
                 isMove = true;
             else if (hit.collider.tag == "Blue")
             {
