@@ -66,7 +66,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                PhotonNetwork.Instantiate("BFireBall", fireBall.position, Quaternion.identity);
+                PhotonNetwork.Instantiate("BFireBall", fireBall.position, Quaternion.Euler(0, 0, -90));
                 fireReady = 0;
                 isFireReady = false;
                 //StartCoroutine(Attack());

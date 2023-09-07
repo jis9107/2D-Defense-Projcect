@@ -65,7 +65,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                PhotonNetwork.Instantiate("RFireBall", fireBall.position, Quaternion.identity);
+                PhotonNetwork.Instantiate("RFireBall", fireBall.position, Quaternion.Euler(0, 0, 90));
                 fireReady = 0;
                 isFireReady = false;
                 //StartCoroutine(Attack());
