@@ -87,10 +87,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.4f);
-        meleeArea.enabled = true;
-        yield return new WaitForSeconds(0.4f);
-        meleeArea.enabled = false;
+        yield return new WaitForSeconds(0.2f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
