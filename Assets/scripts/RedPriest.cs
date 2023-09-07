@@ -61,11 +61,11 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.3f);
             if (hit.collider == null || hit.collider.tag == "Red")
                 isMove = true;
-            else if (hit.collider.tag == "Blue")
+            else if (hit.collider.tag == "Blue" && isFireReady == true)
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                PhotonNetwork.Instantiate("RFireBall", fireBall, Quaternion.identity);
+                PhotonNetwork.Instantiate("RFireBall", fireBall.position, Quaternion.identity);
                 fireReady = 0;
                 isFireReady = false;
                 //StartCoroutine(Attack());
