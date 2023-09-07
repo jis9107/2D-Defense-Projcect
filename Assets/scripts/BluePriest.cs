@@ -10,11 +10,16 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
     public Animator an;
     public SpriteRenderer sr;
     public PhotonView pv;
+    public Transform fireBall;
 
     public int curHealth;
 
     bool isMove;
     bool isDamage;
+    bool isFireReady;
+
+    float fireReady;
+    
 
     Vector3 curPos;
 
@@ -41,6 +46,11 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (pv.IsMine)
         {
+            fireReady += Time.deltaTime;
+            if(fireReady > 2f)
+            {
+                isFireReady = true;
+            }
             if (isMove == true)
             {
                 an.SetBool("walk", true);
@@ -52,10 +62,13 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 1.3f);
             if (hit.collider == null || hit.collider.tag == "Blue")
                 isMove = true;
-            else if (hit.collider.tag == "Red")
+            else if (hit.collider.tag == "Red" && isFireReady == true)
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                PhotonNetwork.Instantiate("BFireBall", fireBall, Quaternion.identity);
+                fireReady = 0;
+                isFireReady = false;
                 //StartCoroutine(Attack());
             }
             else

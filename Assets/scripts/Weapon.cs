@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviourPunCallbacks, IPunObservable
     public enum Type
     {
         Knight,
-        Soldier,
+        Priest,
         Thief
     }
     public Type type;
@@ -28,8 +28,8 @@ public class Weapon : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (type == Type.Knight)
             damage = 10;
-        if (type == Type.Soldier)
-            damage = 12;
+        if (type == Type.Priest)
+            damage = 15;
         if (type == Type.Thief)
             damage = 15;
     }

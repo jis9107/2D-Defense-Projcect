@@ -10,11 +10,15 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     public Animator an;
     public SpriteRenderer sr;
     public PhotonView pv;
+    public Transform fireBall;
 
     public int curHealth;
 
     bool isMove;
     bool isDamage;
+    bool isFireReady;
+
+    float fireReady;
 
     Vector3 curPos;
 
@@ -41,6 +45,11 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (pv.IsMine)
         {
+            fireReady += Time.deltaTime;
+            if (fireReady > 2f)
+            {
+                isFireReady = true;
+            }
             if (isMove == true)
             {
                 an.SetBool("walk", true);
@@ -56,6 +65,9 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                PhotonNetwork.Instantiate("RFireBall", fireBall, Quaternion.identity);
+                fireReady = 0;
+                isFireReady = false;
                 //StartCoroutine(Attack());
             }
             else
