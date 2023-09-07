@@ -18,7 +18,7 @@ public class BFireBall : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * 4 * Time.deltaTime);
+        transform.Translate(Vector2.left * 4 * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

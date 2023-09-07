@@ -18,7 +18,7 @@ public class RFireBall : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * 4 * Time.deltaTime);
+        transform.Translate(Vector2.right * 4 * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
