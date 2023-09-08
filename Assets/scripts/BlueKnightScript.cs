@@ -11,6 +11,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer sr;
     public PhotonView pv;
     public BoxCollider2D meleeArea;
+    public Transform sword;
 
     public int curHealth;
 
@@ -57,7 +58,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                //StartCoroutine(Attack());
+                StartCoroutine(Attack());
             }
             else
             {
@@ -89,10 +90,8 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.4f);
-        meleeArea.enabled = true;
-        yield return new WaitForSeconds(0.4f);
-        meleeArea.enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        PhotonNetwork.Instantiate("sword", sword.position, Quaternion.identity);
     }
 
     void OnTriggerEnter2D(Collider2D other)
