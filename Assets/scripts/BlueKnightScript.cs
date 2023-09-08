@@ -58,7 +58,8 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isMove = false;
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                StartCoroutine(Attack());
+                PhotonNetwork.Instantiate("sword", sword.position, Quaternion.identity); // 1초가 적당함.
+                Debug.Log(sword.position);
             }
             else
             {
