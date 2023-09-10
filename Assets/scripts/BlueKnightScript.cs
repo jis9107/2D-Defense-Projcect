@@ -62,18 +62,19 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.1f);
             if (hit.collider == null)
                 isMove = true;
-            else if(hit.collider.tag == "Blue")
+            else if(hit.collider != null)
             {
                 isMove = false;
+                if (hit.collider.tag == "Red" && isFireReady == true)
+                {
+                    isMove = false;
+                    isFireReady = false;
+                    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                    StartCoroutine(Attack());
+                    fireReady = 0;
+                }
             }
-            else if (hit.collider.tag == "Red" && isFireReady == true)
-            {
-                isMove = false;
-                isFireReady = false;
-                pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                StartCoroutine(Attack());
-                fireReady = 0;
-            }
+
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
