@@ -71,7 +71,6 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                     isFireReady = false;
                     pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                     StartCoroutine(Attack());
-                    meleeArea.enabled = false;
                     fireReady = 0;
                 }
             }
