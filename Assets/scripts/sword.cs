@@ -30,21 +30,18 @@ public class sword : MonoBehaviourPunCallbacks
             switch(_name){
                 
                 case "RedKnight" :
-                    //col.GetComponent<RedKnightScript>().Hit(10);
+                    col.GetComponent<RedKnightScript>().Hit(10);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedPriest":
-                    //col.GetComponent<RedKnightScript>().Hit(10);
+                    col.GetComponent<RedPriest>().Hit(10);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 default :
                     break;
-
-
             }
-
         }
     }
 

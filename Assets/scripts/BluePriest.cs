@@ -47,7 +47,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
         if (pv.IsMine)
         {
             fireReady += Time.deltaTime;
-            if(fireReady > 2f)
+            if (fireReady > 2f)
             {
                 isFireReady = true;
             }
@@ -60,24 +60,43 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.left * 0.7f), Vector2.left * 1.3f, new Color(1, 0, 0));
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 1.3f);
-            if (hit.collider == null || hit.collider.tag == "Blue")
+            //if (hit.collider == null || hit.collider.tag == "Blue")
+            //    isMove = true;
+            //else if (hit.collider.tag == "Red" && isFireReady == true)
+            //{
+            //    isMove = false;
+            //    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+            //    PhotonNetwork.Instantiate("BFireBall", rb.position + (Vector2.up) + (Vector2.left * 0.7f), Quaternion.Euler(0, 0, -90));
+            //    isFireReady = false;
+            //    fireReady = 0;
+            //    //StartCoroutine(Attack());
+            //}
+            //else
+            //{
+            //    isMove = false;
+            //}
+            if (hit.collider == null)
                 isMove = true;
-            else if (hit.collider.tag == "Red" && isFireReady == true)
+            else if (hit.collider != null)
             {
                 isMove = false;
-                pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                PhotonNetwork.Instantiate("BFireBall", rb.position + (Vector2.up) + (Vector2.left * 0.7f), Quaternion.Euler(0, 0, -90));
-                isFireReady = false;
-                fireReady = 0;
-                //StartCoroutine(Attack());
-            }
-            else
-            {
-                isMove = false;
+                if (hit.collider.tag == "Red" && isFireReady == true)
+                {
+                    isMove = false;
+                    isFireReady = false;
+                    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                    StartCoroutine(Attack());
+                    fireReady = 0;
+                }
             }
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
+    }
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(1f);
+        PhotonNetwork.Instantiate("BFireBall", rb.position + (Vector2.up) + (Vector2.left * 0.7f), Quaternion.Euler(0, 0, -90));
     }
 
 
@@ -99,32 +118,42 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
         Destroy(gameObject, 0.2f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.tag == "RedMelee")
+    //    {
+    //        if (!isDamage)
+    //        {
+    //            Weapon weapon = other.GetComponent<Weapon>();
+    //            curHealth -= weapon.damage;
+    //            StartCoroutine("OnDamage");
+
+    //            if (curHealth <= 0)
+    //            {
+    //                StopAllCoroutines();
+    //                pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
+    //            }
+    //        }
+
+    //    }
+    //}
+
+    //IEnumerator OnDamage()
+    //{
+    //    isDamage = true;
+    //    yield return new WaitForSeconds(1.3f);
+
+    //    isDamage = false;
+    //}
+
+    public void Hit(int damage)
     {
-        if (other.tag == "RedMelee")
+        curHealth -= damage;
+        if (curHealth <= 0)
         {
-            if (!isDamage)
-            {
-                Weapon weapon = other.GetComponent<Weapon>();
-                curHealth -= weapon.damage;
-                StartCoroutine("OnDamage");
-
-                if (curHealth <= 0)
-                {
-                    StopAllCoroutines();
-                    pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-                }
-            }
-
+            StopAllCoroutines();
+            pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
         }
-    }
-
-    IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return new WaitForSeconds(1.3f);
-
-        isDamage = false;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
