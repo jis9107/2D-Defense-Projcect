@@ -11,11 +11,15 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer sr;
     public PhotonView pv;
     public BoxCollider2D meleeArea;
+    public Transform sword;
 
     public int curHealth;
 
+    float fireReady;
+
     bool isMove;
     bool isDamage;
+    bool isFireReady;
 
     Vector3 curPos;
 
@@ -27,7 +31,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Start()
     {
-        
+        isFireReady = false;   
     }
 
     void Update()
@@ -39,6 +43,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (pv.IsMine)
         {
+            fireReady += Time.deltaTime;
+            if(fireReady > 2f)
+            {
+                isFireReady = true;
+            }
             if (isMove == true)
             {
                 an.SetBool("walk", true);
@@ -50,15 +59,17 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.1f);
             if (hit.collider == null)
                 isMove = true;
-            else if (hit.collider.tag == "Blue")
+            else if (hit.collider != null)
             {
                 isMove = false;
-                pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                //StartCoroutine(Attack());
-            }
-            else
-            {
-                isMove = false;
+                if (hit.collider.tag == "Blue" && isFireReady == true)
+                {
+                    isMove = false;
+                    isFireReady = false;
+                    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                    StartCoroutine(Attack());
+                    fireReady = 0;
+                }
             }
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
@@ -87,36 +98,47 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
+        PhotonNetwork.Instantiate("sword", sword.position, Quaternion.identity);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "BlueMelee")
-        {
-            if (!isDamage)
-            {
-                Weapon weapon = other.GetComponent<Weapon>();
-                curHealth -= weapon.damage;
-                StartCoroutine("OnDamage");
+        //if (other.tag == "BlueMelee")
+        //{
+        //    if (!isDamage)
+        //    {
+        //        Weapon weapon = other.GetComponent<Weapon>();
+        //        curHealth -= weapon.damage;
+        //        StartCoroutine("OnDamage");
 
-                if (curHealth <= 0)
-                {
-                    StopAllCoroutines();
-                    pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-                }
+        //        if (curHealth <= 0)
+        //        {
+        //            StopAllCoroutines();
+        //            pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
+        //        }
 
-            }
+        //    }
 
-        }
+        //}
     }
 
-    IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return new WaitForSeconds(1.3f);
+    //IEnumerator OnDamage()
+    //{
+    //    isDamage = true;
+    //    yield return new WaitForSeconds(1.3f);
 
-        isDamage = false;
+    //    isDamage = false;
+    //}
+
+    public void Hit(int damage)
+    {
+        curHealth -= damage;
+        if (curHealth <= 0)
+        {
+            StopAllCoroutines();
+            pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
