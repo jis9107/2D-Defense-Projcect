@@ -71,6 +71,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
                     isFireReady = false;
                     pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                     StartCoroutine(Attack());
+                    meleeArea.enabled = false;
                     fireReady = 0;
                 }
             }
@@ -102,7 +103,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(1f);
-        PhotonNetwork.Instantiate("sword", sword.position, Quaternion.identity);
+        meleeArea.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
