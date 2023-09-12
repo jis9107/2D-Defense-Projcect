@@ -96,10 +96,17 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         Destroy(gameObject, 0.2f);
     }
 
+    [PunRPC]
+    void SwingRPC()
+    {
+        meleeArea.enabled = true;
+    }
+
+
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(1f);
-        meleeArea.enabled = true;
+        pv.RPC("SwingRPC", RpcTarget.AllBuffered);
     }
 
     void OnTriggerEnter2D(Collider2D other)

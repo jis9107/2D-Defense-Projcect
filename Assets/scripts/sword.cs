@@ -32,14 +32,12 @@ public class sword : MonoBehaviourPunCallbacks
                 
                 case "RedKnight(Clone)" :
                     col.GetComponent<RedKnightScript>().Hit(10);
-                    meleeArea.enabled = false;
-
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedPriest(Clone)":
                     col.GetComponent<RedPriest>().Hit(10);
-                    meleeArea.enabled = false;
-                    break;
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered); break;
 
                 default :
                     break;
@@ -54,13 +52,12 @@ public class sword : MonoBehaviourPunCallbacks
 
                 case "BlueKnight(Clone)":
                     col.GetComponent<BlueKnightScript>().Hit(10);
-                    meleeArea.enabled = false;
-
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BluePriest(Clone)":
                     col.GetComponent<BluePriest>().Hit(10);
-                    meleeArea.enabled = false;
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 default:
@@ -71,4 +68,10 @@ public class sword : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void DestroyRPC() => Destroy(gameObject);
+    
+    [PunRPC]
+    void EndSwingRPC()
+    {
+        meleeArea.enabled = false;
+    }
 }
