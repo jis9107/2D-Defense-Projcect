@@ -92,6 +92,11 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void DestoryRPC()
     {
+        if (!pv.IsMine)
+        {
+            GameControll _game = FindObjectOfType<GameControll>();
+            _game.userMoney += 2;
+        }
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);
     }

@@ -60,6 +60,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.left * 0.7f), Vector2.left * 1.3f, new Color(1, 0, 0));
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 1.3f);
+            RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.1f);
             //if (hit.collider == null || hit.collider.tag == "Blue")
             //    isMove = true;
             //else if (hit.collider.tag == "Red" && isFireReady == true)
@@ -77,17 +78,17 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
             //}
             if (hit.collider == null)
                 isMove = true;
-            else if (hit.collider != null)
+            if (hit_our.collider.tag == "Blue")
             {
                 isMove = false;
-                if (hit.collider.tag == "Red" && isFireReady == true)
-                {
-                    isMove = false;
-                    isFireReady = false;
-                    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                    StartCoroutine(Attack());
-                    fireReady = 0;
-                }
+            }
+            else if (hit.collider.tag == "Red" && isFireReady == true)
+            {
+                isMove = false;
+                isFireReady = false;
+                pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                StartCoroutine(Attack());
+                fireReady = 0;
             }
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
@@ -114,6 +115,11 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void DestoryRPC()
     {
+        if (!pv.IsMine)
+        {
+            GameControll _game = FindObjectOfType<GameControll>();
+            _game.userMoney += 3;
+        }
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);
     }
