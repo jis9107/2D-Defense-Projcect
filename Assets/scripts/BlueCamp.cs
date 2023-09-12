@@ -39,31 +39,6 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-            if (other.tag == "RedMelee")
-            {
-                if (isDamage == false)
-                {
-                    Weapon weapon = other.GetComponent<Weapon>();
-                    healthImage.fillAmount -= weapon.damage / 100f;
-                    StartCoroutine("OnDamage");
-
-                    if (healthImage.fillAmount <= 0)
-                    {
-                        pv.RPC("RedTeamWin", RpcTarget.AllBuffered);
-                        //if (_gamecontrol._state == GameControll.State.Blue)
-                        //{
-                        //    GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
-                        //}
-                        //if (_gamecontrol._state == GameControll.State.Red)
-                        //{
-                        //    GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
-                        //}
-                        //_gamecontrol.gamestartPanel.SetActive(false);
-                    }
-                }
-
-            }
-        
 
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -77,27 +52,21 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
             healthImage.fillAmount = (float)stream.ReceiveNext();
         }
     }
-    IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return new WaitForSeconds(1f);
-        isDamage = false;
-    }
-
-    //public void Hit()
-    //{
-    //    healthImage.fillAmount -= 0.1f;
-    //    if (healthImage.fillAmount <= 0)
-    //    {
-    //        pv.RPC("DestroyRPC", RpcTarget.AllBuffered); // AllBuffered로 해야 제대로 사라져 복제버그가 안 생긴다
-    //    }
-    //}
 
     [PunRPC]
     void RedTeamWin()
     {
         Destroy(this.gameObject);
         GameObject.Find("Canvas").transform.Find("RedWinPanel").gameObject.SetActive(true);
+    }
+
+    public void Hit(int damage)
+    {
+        healthImage.fillAmount -= damage / 10f;
+        if (healthImage.fillAmount <= 0)
+        {
+            pv.RPC("RedTeamWin", RpcTarget.AllBuffered);
+        }
     }
 
 

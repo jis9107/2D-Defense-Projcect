@@ -39,6 +39,10 @@ public class sword : MonoBehaviourPunCallbacks
                     col.GetComponent<RedPriest>().Hit(10);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered); break;
 
+                case "RedBase(Clone)":
+                    col.GetComponent<RedCamp>().Hit(10);
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered); break;
+
                 default :
                     break;
             }

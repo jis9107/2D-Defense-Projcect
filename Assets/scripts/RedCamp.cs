@@ -39,33 +39,6 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
     void OnTriggerEnter2D(Collider2D other)
     {
 
-            if (other.tag == "BlueMelee")
-            {
-                if (isDamage == false)
-                {
-                    Weapon weapon = other.GetComponent<Weapon>();
-                    healthImage.fillAmount -= weapon.damage / 100f;
-                    StartCoroutine("OnDamage");
-
-                    if (healthImage.fillAmount <= 0)
-                    {
-                        pv.RPC("BlueTeamWin", RpcTarget.AllBuffered);
-                        //_gamecontrol = FindObjectOfType<GameControll>();
-                        //_gamecontrol.BlueWin();
-                        //if (_gamecontrol._state == GameControll.State.Blue)
-                        //{
-                        //    GameObject.Find("Canvas").transform.Find("WinPanel").gameObject.SetActive(true);
-                        //}
-                        //if (_gamecontrol._state == GameControll.State.Red)
-                        //{
-                        //    GameObject.Find("Canvas").transform.Find("LosePanel").gameObject.SetActive(true);
-                        //}
-                        //_gamecontrol.gamestartPanel.SetActive(false);
-                    }
-                }
-
-            }
-        
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -78,18 +51,21 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
             healthImage.fillAmount = (float)stream.ReceiveNext();
         }
     }
-    IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return new WaitForSeconds(0.8f);
-        isDamage = false;
-    }
 
     [PunRPC]
     void BlueTeamWin()
     {
         Destroy(this.gameObject);
         GameObject.Find("Canvas").transform.Find("RedWinPanel").gameObject.SetActive(true);
+    }
+
+    public void Hit(int damage)
+    {
+        healthImage.fillAmount -= damage/10f;
+        if (healthImage.fillAmount <= 0)
+        {
+            pv.RPC("BlueTeamWin", RpcTarget.AllBuffered);
+        }
     }
 
 }
