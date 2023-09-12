@@ -28,7 +28,6 @@ public class sword : MonoBehaviourPunCallbacks
         if (!pv.IsMine && col.tag == "Red" && col.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 Hit판정
         {
             _name = col.gameObject.name;
-            Debug.Log(_name);
             switch(_name){
                 
                 case "RedKnight(Clone)" :
@@ -43,6 +42,28 @@ public class sword : MonoBehaviourPunCallbacks
                     break;
 
                 default :
+                    break;
+            }
+        }
+
+        if (!pv.IsMine && col.tag == "Blue" && col.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 Hit판정
+        {
+            _name = col.gameObject.name;
+            switch (_name)
+            {
+
+                case "BlueKnight(Clone)":
+                    col.GetComponent<BlueKnightScript>().Hit(10);
+                    meleeArea.enabled = false;
+
+                    break;
+
+                case "BluePriest(Clone)":
+                    col.GetComponent<BluePriest>().Hit(10);
+                    meleeArea.enabled = false;
+                    break;
+
+                default:
                     break;
             }
         }

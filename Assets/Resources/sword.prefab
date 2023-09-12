@@ -81,4 +81,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: -1743404576929667602}
-  attackPosition: {fileID: 0}
+  meleeArea: {fileID: 0}

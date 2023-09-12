@@ -99,7 +99,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(1f);
-        PhotonNetwork.Instantiate("sword", sword.position, Quaternion.identity);
+        meleeArea.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
