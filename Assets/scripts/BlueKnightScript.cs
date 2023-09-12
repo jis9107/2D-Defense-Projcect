@@ -95,6 +95,11 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void DestoryRPC()
     {
+        if (!pv.IsMine)
+        {
+            GameControll _game = FindObjectOfType<GameControll>();
+            _game.userMoney += 2;
+        }
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);
     }
@@ -111,34 +116,6 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(1f);
         pv.RPC("SwingRPC", RpcTarget.AllBuffered);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        //if (other.tag == "RedMelee")
-        //{
-        //    if (!isDamage)
-        //    {
-        //        Weapon weapon = other.GetComponent<Weapon>();
-        //        curHealth -= weapon.damage;
-        //        StartCoroutine("OnDamage");
-
-        //        if (curHealth <= 0)
-        //        {
-        //            StopAllCoroutines();
-        //            pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-        //        }
-        //    }
-
-        //}
-    }
-
-    //IEnumerator OnDamage()
-    //{
-    //    isDamage = true;
-    //    yield return new WaitForSeconds(1.3f);
-
-    //    isDamage = false;
-    //}
 
     public void Hit(int damage)
     {
