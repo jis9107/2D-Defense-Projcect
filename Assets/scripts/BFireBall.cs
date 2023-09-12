@@ -9,6 +9,8 @@ public class BFireBall : MonoBehaviourPunCallbacks
 
     public PhotonView pv;
 
+    string _name;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +25,30 @@ public class BFireBall : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!pv.IsMine && col.tag == "Red")
+        if (!pv.IsMine && col.tag == "Red" && col.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 Hit판정
         {
+            _name = col.gameObject.name;
+            switch (_name)
+            {
 
-            pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
+                case "RedKnight(Clone)":
+                    col.GetComponent<RedKnightScript>().Hit(10);
+                    pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
+                    break;
+
+                case "RedPriest(Clone)":
+                    col.GetComponent<RedPriest>().Hit(10);
+                    pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
+                    break;
+
+                case "RedBase(Clone)":
+                    col.GetComponent<RedCamp>().Hit(10);
+                    pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 

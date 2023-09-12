@@ -78,10 +78,6 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             
             if (hit.collider == null)
                 isMove = true;
-            if (hit_our.collider.tag == "Red")
-            {
-                isMove = false;
-            }
             else if (hit.collider.tag == "Blue" && isFireReady == true)
             {
                 isMove = false;
@@ -89,6 +85,10 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                 StartCoroutine(Attack());
                 fireReady = 0;
+            }
+            if (hit_our.collider.tag == "Red")
+            {
+                isMove = false;
             }
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
@@ -124,18 +124,6 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
         Destroy(gameObject, 0.2f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        
-    }
-
-    IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return new WaitForSeconds(1.3f);
-
-        isDamage = false;
-    }
     public void Hit(int damage)
     {
         curHealth -= damage;

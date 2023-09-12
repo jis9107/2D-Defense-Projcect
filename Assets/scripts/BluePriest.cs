@@ -78,10 +78,6 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
             //}
             if (hit.collider == null)
                 isMove = true;
-            if (hit_our.collider.tag == "Blue")
-            {
-                isMove = false;
-            }
             else if (hit.collider.tag == "Red" && isFireReady == true)
             {
                 isMove = false;
@@ -89,6 +85,10 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
                 pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                 StartCoroutine(Attack());
                 fireReady = 0;
+            }
+            if (hit_our.collider.tag == "Blue")
+            {
+                isMove = false;
             }
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
