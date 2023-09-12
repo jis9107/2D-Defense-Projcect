@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 4099227230115905023}
+  meleeArea: {fileID: 7333405666105281686}
 --- !u!1 &1772682538117103997
 GameObject:
   m_ObjectHideFlags: 0
