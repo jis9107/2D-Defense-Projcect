@@ -58,15 +58,13 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             else
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.5f, new Color(1, 0, 0));
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.5f);
-            RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.01f);
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.4f);
+            //RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.01f);
 
-            if (hit.collider == null && hit_our.collider == null)
-                isMove = true;
-            else if (hit.collider.tag == "Blue" || hit_our.collider != null)
+            if (hit.collider.tag == "Blue")
             {
                 isMove = false;
-                if (hit.collider.tag == "Blue" && isFireReady == true)
+                if (isFireReady == true)
                 {
                     pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                     StartCoroutine(Attack());
@@ -74,6 +72,9 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
                     fireReady = 0;
                 }
             }
+            else
+                isMove = true;
+
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);

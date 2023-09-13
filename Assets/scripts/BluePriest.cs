@@ -59,15 +59,13 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
             else
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.left * 0.7f), Vector2.left * 1.5f, new Color(1, 0, 0));
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 1.5f);
-            RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.01f);
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 1.4f);
+            //RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.01f);
 
-            if (hit.collider == null && hit_our.collider == null)
-                isMove = true;
-            else if (hit.collider.tag == "Red" || hit_our.collider != null)
+            if (hit.collider.tag == "Red")
             {
                 isMove = false;
-                if (hit.collider.tag == "Red" && isFireReady == true)
+                if (isFireReady == true)
                 {
                     pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                     StartCoroutine(Attack());
@@ -75,6 +73,9 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
                     fireReady = 0;
                 }
             }
+            else
+                isMove = true;
+
 
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
