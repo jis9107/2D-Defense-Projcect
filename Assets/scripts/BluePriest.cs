@@ -34,7 +34,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
 
     void Start()
     {
-
+        isMove = true;
     }
 
     void Update()

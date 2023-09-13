@@ -61,7 +61,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.4f);
             //RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.01f);
 
-            if (hit.collider.tag == "Red")
+            if (hit.collider.tag == "Blue")
             {
                 isMove = false;
                 if (isFireReady == true)
