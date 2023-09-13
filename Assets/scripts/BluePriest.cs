@@ -62,21 +62,19 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 1.4f);
             //RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.left * 0.7f), Vector2.left, 0.01f);
 
-            if (hit.collider.tag == null)
+            if (hit.collider.tag == "Red")
             {
-                isMove = true;
-            }
-            else
-            {
-                if(hit.collider.tag == "Red" && isFireReady == true)
+                isMove = false;
+                if (isFireReady == true)
                 {
-                    isMove = false;
                     pv.RPC("AttackRPC", RpcTarget.AllBuffered);
                     StartCoroutine(Attack());
                     isFireReady = false;
                     fireReady = 0;
                 }
             }
+            else
+                isMove = true;
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
