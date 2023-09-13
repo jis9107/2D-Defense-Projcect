@@ -60,35 +60,19 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.3f, new Color(1, 0, 0));
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.3f);
             RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.1f);
-            //if (hit.collider == null || hit.collider.tag == "Red")
-            //    isMove = true;
-            //else if (hit.collider.tag == "Blue" && isFireReady == true)
-            //{
-            //    isMove = false;
-            //    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-            //    PhotonNetwork.Instantiate("RFireBall", rb.position + (Vector2.up) + (Vector2.right * 0.7f), Quaternion.Euler(0, 0, 90));
-            //    isFireReady = false;
-            //    fireReady = 0;
-            //    //StartCoroutine(Attack());
-            //}
-            //else
-            //{
-            //    isMove = false;
-            //}
-            
-            if (hit.collider == null)
+
+            if (hit.collider == null && hit_our.collider == null)
                 isMove = true;
-            else if (hit.collider.tag == "Blue" && isFireReady == true)
+            else if (hit.collider.tag == "Blue" || hit_our.collider != null)
             {
                 isMove = false;
-                isFireReady = false;
-                pv.RPC("AttackRPC", RpcTarget.AllBuffered);
-                StartCoroutine(Attack());
-                fireReady = 0;
-            }
-            if (hit_our.collider.tag == "Red")
-            {
-                isMove = false;
+                if (hit.collider.tag == "Blue" && isFireReady == true)
+                {
+                    pv.RPC("AttackRPC", RpcTarget.AllBuffered);
+                    StartCoroutine(Attack());
+                    isFireReady = false;
+                    fireReady = 0;
+                }
             }
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
@@ -96,7 +80,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     }
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         PhotonNetwork.Instantiate("RFireBall", rb.position + (Vector2.up) + (Vector2.right * 0.7f), Quaternion.Euler(0, 0, 90));
     }
 
