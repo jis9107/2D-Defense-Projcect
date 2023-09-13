@@ -115,7 +115,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             gameControl._state = GameControll.State.Red;
             //redNick.text = PhotonNetwork.LocalPlayer.NickName;
             //blueNick.text = newPlayer.NickName;
-            PhotonNetwork.Instantiate("RedBase", new Vector3(-8.09f, -0.72f, 0), Quaternion.Euler(0, 0, 0));
+            PhotonNetwork.Instantiate("RedBase", new Vector3(-8.3f, -0.72f, 0), Quaternion.Euler(0, 0, 0));
         }
 
         UpdatePlayerCounts();

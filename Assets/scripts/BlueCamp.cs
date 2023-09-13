@@ -56,8 +56,9 @@ public class BlueCamp : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void RedTeamWin()
     {
+        _gamecontrol.gamestartPanel.SetActive(false);
+        _gamecontrol.redWinPanel.SetActive(true);
         Destroy(this.gameObject);
-        GameObject.Find("Canvas").transform.Find("RedWinPanel").gameObject.SetActive(true);
     }
 
     public void Hit(int damage)

@@ -46,7 +46,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
         if (pv.IsMine)
         {
             fireReady += Time.deltaTime;
-            if (fireReady > 2f)
+            if (fireReady > 1.8f)
             {
                 isFireReady = true;
             }
@@ -84,7 +84,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     }
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         PhotonNetwork.Instantiate("RFireBall", rb.position + (Vector2.up) + (Vector2.right * 0.7f), Quaternion.Euler(0, 0, 90));
     }
 
