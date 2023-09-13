@@ -57,8 +57,8 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
             }
             else
                 an.SetBool("walk", false);
-            Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.3f, new Color(1, 0, 0));
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 7f);
+            Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.5f, new Color(1, 0, 0));
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.5f);
             RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.01f);
 
             if (hit.collider == null && hit_our.collider == null)
