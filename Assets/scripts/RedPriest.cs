@@ -33,7 +33,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
 
     void Start()
     {
-        isMove = true;
+
     }
 
     void Update()
@@ -55,13 +55,17 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
                 an.SetBool("walk", true);
                 Move();
             }
-            else
+            else if(isMove == false)
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.5f, new Color(1, 0, 0));
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.4f);
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.4f, 1 << LayerMask.NameToLayer("Blue"));
             //RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.01f);
 
-            if (hit.collider.tag == "Blue")
+            if (hit.collider == null)
+            {
+                isMove = true;
+            }
+            else
             {
                 isMove = false;
                 if (isFireReady == true)
@@ -71,9 +75,8 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
                     isFireReady = false;
                     fireReady = 0;
                 }
+
             }
-            else
-                isMove = true;
 
         }
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
