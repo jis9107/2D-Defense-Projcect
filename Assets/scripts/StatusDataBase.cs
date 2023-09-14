@@ -6,15 +6,12 @@ using Photon.Realtime;
 
 public class StatusDataBase : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int knightDamage;
+    public int priestDamage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int knightHealth;
+    public int priestHealth;
+
+    public int moveSpeed;
+
 }
