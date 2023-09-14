@@ -64,12 +64,12 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _priestPrice = int.Parse(soldierPrice.text);
         if (userMoney >= _priestPrice)
         {
-            if (_state == State.Red)
+            if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedPriest", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _priestPrice;
             }
-            if (_state == State.Blue)
+            if (!PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("BluePriest", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _priestPrice;
@@ -81,12 +81,12 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _thiefPrice = int.Parse(thiefPrice.text);
         if (userMoney >= _thiefPrice)
         {
-            if (_state == State.Red)
+            if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedThief", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _thiefPrice;
             }
-            if (_state == State.Blue)
+            if (!PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("BlueThief", blueSpawn.position, Quaternion.Euler(0, 0, 0));
                 userMoney -= _thiefPrice;
@@ -118,6 +118,30 @@ public class GameControll : MonoBehaviourPunCallbacks
     {
         gamestartPanel.SetActive(false);
         blueWinPanel.SetActive(true);
+    }
+
+    public void UpgradeKnightDamage()
+    {
+
+    }
+
+    public void UpgradePriestDamage()
+    {
+
+    }
+
+    public void UpgradeKnightHealth()
+    {
+
+    }
+    public void UpgradePriestHealth()
+    {
+
+    }
+
+    public void UpgradeMoveSpeed()
+    {
+
     }
 
 }

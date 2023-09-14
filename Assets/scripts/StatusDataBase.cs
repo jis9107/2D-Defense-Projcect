@@ -12,6 +12,6 @@ public class StatusDataBase : MonoBehaviourPunCallbacks
     public int knightHealth;
     public int priestHealth;
 
-    public int moveSpeed;
+    public float moveSpeed;
 
 }
