@@ -12,12 +12,16 @@ public class RFireBall : MonoBehaviourPunCallbacks
     public int damage;
 
     string _name;
-   
+
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         StatusDataBase _status = FindObjectOfType<StatusDataBase>();
         damage = _status.priestDamage;
+    }
+    void Start()
+    {
         Destroy(gameObject, 3f);
     }
 

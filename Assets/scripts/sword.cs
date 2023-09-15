@@ -14,10 +14,14 @@ public class sword : MonoBehaviourPunCallbacks
     string _name;
 
 
-    void Start()
+    void Awake()
     {
         StatusDataBase _status = FindObjectOfType<StatusDataBase>();
         damage = _status.knightDamage;
+    }
+    void Start()
+    {
+
     }
 
     void Update()
