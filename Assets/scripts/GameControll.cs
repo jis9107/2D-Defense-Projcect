@@ -146,6 +146,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         {
             status.knightDamage += 5;
             status.priestDamage += 8;
+            userMoney -= _attackUpPrice;
             _attackUpPrice += 2;
             attackUpPrice.text = _attackUpPrice.ToString();
             if(_attackUpPrice > 10)
@@ -164,6 +165,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         {
             status.knightHealth += 10;
             status.priestHealth += 5;
+            userMoney -= _healthUpPrice;
             _healthUpPrice += 2;
             healthUpPrice.text = _healthUpPrice.ToString();
             if (_healthUpPrice > 10)
@@ -182,6 +184,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         if (userMoney >= _movespUpPrice)
         {
             status.moveSpeed += 0.1f;
+            userMoney -= _movespUpPrice;
             _movespUpPrice += 2;
             movespUpPrice.text = _movespUpPrice.ToString();
             if (_movespUpPrice > 10)
