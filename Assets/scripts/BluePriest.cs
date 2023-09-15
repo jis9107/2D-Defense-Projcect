@@ -110,7 +110,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
         if (!pv.IsMine)
         {
             GameControll _game = FindObjectOfType<GameControll>();
-            _game.userMoney += 3;
+            _game.userMoney += 5;
         }
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);
