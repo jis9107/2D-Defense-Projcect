@@ -63,4 +63,5 @@ public class RFireBall : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void DestroyRPC() => Destroy(gameObject);
+
 }

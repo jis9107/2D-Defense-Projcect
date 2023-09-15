@@ -3102,7 +3102,7 @@ MonoBehaviour:
   moneyText: {fileID: 2080929710}
   redSpawn: {fileID: 827724720}
   blueSpawn: {fileID: 1422298433}
-  attackUpPrice: {fileID: 1264809204}
+  attackUpPrice: {fileID: 1649847665}
   healthUpPrice: {fileID: 128678942}
   movespUpPrice: {fileID: 940720770}
   status: {fileID: 897452062}
@@ -6319,89 +6319,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1001 &1980404918
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2127690918, guid: 0d5ab95b92ae4144eae785b330033cdb, type: 3}
-      propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.283431
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.9805256
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771160523826262655, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772682539985674525, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueKnight
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772827130518117991, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099227230115905023, guid: 0d5ab95b92ae4144eae785b330033cdb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0d5ab95b92ae4144eae785b330033cdb, type: 3}
 --- !u!1 &2080929708
 GameObject:
   m_ObjectHideFlags: 0
