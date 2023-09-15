@@ -18,7 +18,9 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     bool isDamage;
     bool isFireReady;
 
+    float _moveSpeed;
     float fireReady;
+
 
     Vector3 curPos;
 
@@ -29,6 +31,9 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
+        curHealth = _status.priestHealth;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Start()
@@ -91,7 +96,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x + (1f * Time.deltaTime), transform.position.y);
+        transform.position = new Vector2(transform.position.x + (_moveSpeed * Time.deltaTime), transform.position.y);
     }
 
     [PunRPC]

@@ -9,12 +9,15 @@ public class sword : MonoBehaviourPunCallbacks
     public PhotonView pv;
     public BoxCollider2D meleeArea;
 
+    public int damage;
+
     string _name;
 
 
     void Start()
     {
-
+        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
+        damage = _status.knightDamage;
     }
 
     void Update()
@@ -31,17 +34,17 @@ public class sword : MonoBehaviourPunCallbacks
             switch(_name){
                 
                 case "RedKnight(Clone)" :
-                    col.GetComponent<RedKnightScript>().Hit(10);
+                    col.GetComponent<RedKnightScript>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedPriest(Clone)":
-                    col.GetComponent<RedPriest>().Hit(10);
+                    col.GetComponent<RedPriest>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedBase(Clone)":
-                    col.GetComponent<RedCamp>().Hit(10);
+                    col.GetComponent<RedCamp>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
@@ -57,17 +60,17 @@ public class sword : MonoBehaviourPunCallbacks
             {
 
                 case "BlueKnight(Clone)":
-                    col.GetComponent<BlueKnightScript>().Hit(10);
+                    col.GetComponent<BlueKnightScript>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BluePriest(Clone)":
-                    col.GetComponent<BluePriest>().Hit(10);
+                    col.GetComponent<BluePriest>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BlueBase(Clone)":
-                    col.GetComponent<BlueCamp>().Hit(10);
+                    col.GetComponent<BlueCamp>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 

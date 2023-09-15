@@ -9,11 +9,15 @@ public class RFireBall : MonoBehaviourPunCallbacks
 
     public PhotonView pv;
 
+    public int damage;
+
     string _name;
    
     // Start is called before the first frame update
     void Start()
     {
+        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
+        damage = _status.priestDamage;
         Destroy(gameObject, 3f);
     }
 
@@ -32,17 +36,17 @@ public class RFireBall : MonoBehaviourPunCallbacks
             {
 
                 case "BlueKnight(Clone)":
-                    col.GetComponent<BlueKnightScript>().Hit(10);
+                    col.GetComponent<BlueKnightScript>().Hit(damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BluePriest(Clone)":
-                    col.GetComponent<BluePriest>().Hit(10);
+                    col.GetComponent<BluePriest>().Hit(damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BlueBase(Clone)":
-                    col.GetComponent<BlueCamp>().Hit(10);
+                    col.GetComponent<BlueCamp>().Hit(damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 

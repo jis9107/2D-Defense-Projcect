@@ -15,6 +15,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     public int curHealth;
 
+    float _moveSpeed;
     float fireReady;
 
     bool isMove;
@@ -30,6 +31,9 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
+        curHealth = _status.knightHealth;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Start()
@@ -83,7 +87,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        transform.position = new Vector2(transform.position.x + (-1f * Time.deltaTime), transform.position.y);
+        transform.position = new Vector2(transform.position.x + (-_moveSpeed * Time.deltaTime), transform.position.y);
     }
 
     [PunRPC]

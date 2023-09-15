@@ -82,3 +82,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: -1743404576929667602}
   meleeArea: {fileID: 0}
+  _status: {fileID: 0}
+  damage: 0
