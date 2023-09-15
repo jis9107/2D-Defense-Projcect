@@ -62,7 +62,7 @@ public class RedCamp : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Hit(int damage)
     {
-        healthImage.fillAmount -= damage/100f;
+        healthImage.fillAmount -= damage/200f;
         if (healthImage.fillAmount <= 0)
         {
             pv.RPC("BlueTeamWin", RpcTarget.AllBuffered);

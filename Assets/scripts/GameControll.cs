@@ -20,6 +20,8 @@ public class GameControll : MonoBehaviourPunCallbacks
     public GameObject redWinPanel;
     public GameObject blueWinPanel;
 
+    public StatusDataBase status;
+
     public Text knightPrice;
     public Text soldierPrice;
     public Text thiefPrice;
@@ -120,24 +122,17 @@ public class GameControll : MonoBehaviourPunCallbacks
         blueWinPanel.SetActive(true);
     }
 
-    public void UpgradeKnightDamage()
+    public void UpgradeDamage()
     {
 
     }
 
-    public void UpgradePriestDamage()
+
+    public void UpgradeHealth()
     {
 
     }
 
-    public void UpgradeKnightHealth()
-    {
-
-    }
-    public void UpgradePriestHealth()
-    {
-
-    }
 
     public void UpgradeMoveSpeed()
     {

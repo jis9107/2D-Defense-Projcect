@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 5937975718632818286}
+  damage: 0
 --- !u!114 &4305344698085240842
 MonoBehaviour:
   m_ObjectHideFlags: 0

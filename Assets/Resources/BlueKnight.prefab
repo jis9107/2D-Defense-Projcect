@@ -277,7 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 4099227230115905023}
   meleeArea: {fileID: 7333405666105281686}
-  _status: {fileID: 0}
   damage: 0
 --- !u!1 &1772682538117103997
 GameObject:
