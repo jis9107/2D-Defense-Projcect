@@ -49,7 +49,7 @@ public class BFireBall : MonoBehaviourPunCallbacks
                     break;
 
                 case "RedMerchant(Clone)":
-                    col.GetComponent<RedPriest>().Hit(damage);
+                    col.GetComponent<RedMerchant>().Hit(damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 

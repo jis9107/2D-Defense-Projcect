@@ -50,7 +50,7 @@ public class RFireBall : MonoBehaviourPunCallbacks
                     break;
 
                 case "BlueMerchant(Clone)":
-                    col.GetComponent<BluePriest>().Hit(damage);
+                    col.GetComponent<BlueMerchant>().Hit(damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
