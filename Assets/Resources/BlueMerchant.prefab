@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886830388946928}
   - component: {fileID: 2873299283197804216}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886828964347444}
   - component: {fileID: 2873299283920689844}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Back leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886830400840158}
   - component: {fileID: 2873299283596816118}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Front leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886831982511086}
   - component: {fileID: 2873299277257450912}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Front arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886829169912178}
   - component: {fileID: 2873299278010311576}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886830956382424}
   - component: {fileID: 2873299278531652284}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Back arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674886831250021318}
   - component: {fileID: 2873299277812802560}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,9 +589,10 @@ GameObject:
   - component: {fileID: 2670967298584612528}
   - component: {fileID: 2670967298584612529}
   - component: {fileID: 2670967298584612526}
-  m_Layer: 8
+  - component: {fileID: 1000014217646296}
+  m_Layer: 9
   m_Name: BlueMerchant
-  m_TagString: Red
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -778,6 +779,24 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2670967298584612528}
   - {fileID: 2670967298584612529}
+  - {fileID: 1000014217646296}
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1000014217646296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671376865174305782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae831ee62fe51ee4f92abd246d177eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2670967298584612533}
+  an: {fileID: 2612277564403809696}
+  sr: {fileID: 2670967298584612531}
+  pv: {fileID: 2670967298584612526}
+  curHealth: 0

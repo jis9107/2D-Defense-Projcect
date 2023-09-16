@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 9148803643585428827}
   - component: {fileID: 9148803643585428826}
   - component: {fileID: 9148803643585428805}
+  - component: {fileID: 1080025664}
   m_Layer: 8
   m_Name: RedMerchant
   m_TagString: Red
@@ -367,9 +368,27 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 9148803643585428827}
   - {fileID: 9148803643585428826}
-  sceneViewId: 0
+  - {fileID: 1080025664}
+  sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1080025664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148106004612663325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ed65da1997cd441bd138912dcf6521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 9148803643585428830}
+  an: {fileID: 9198204701167160907}
+  sr: {fileID: 9148803643585428824}
+  pv: {fileID: 9148803643585428805}
+  curHealth: 0
 --- !u!1 &9148106006229802613
 GameObject:
   m_ObjectHideFlags: 0
