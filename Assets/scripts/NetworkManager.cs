@@ -12,21 +12,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject loadingPanel;
     public GameObject gameStartPanel;
-    public GameObject redBase;
-    public GameObject blueBase;
 
     public GameControll gameControl;
 
     public Text currentText;
     public Text redNick;
     public Text blueNick;
-
-    //public bool inGame;
-    //public float userMoney;
-
-    //public Text nickNameText;
-    //public Text moneyText;
-    //public Image healthImage;
 
     private void Awake()
     {
