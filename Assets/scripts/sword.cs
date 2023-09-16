@@ -47,6 +47,11 @@ public class sword : MonoBehaviourPunCallbacks
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;
 
+                case "RedMerchant(Clone)":
+                    col.GetComponent<BluePriest>().Hit(damage);
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
+                    break;
+
                 case "RedBase(Clone)":
                     col.GetComponent<RedCamp>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
@@ -69,6 +74,11 @@ public class sword : MonoBehaviourPunCallbacks
                     break;
 
                 case "BluePriest(Clone)":
+                    col.GetComponent<BluePriest>().Hit(damage);
+                    pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
+                    break;
+
+                case "BlueMerchant(Clone)":
                     col.GetComponent<BluePriest>().Hit(damage);
                     pv.RPC("EndSwingRPC", RpcTarget.AllBuffered);
                     break;

@@ -49,6 +49,11 @@ public class RFireBall : MonoBehaviourPunCallbacks
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
+                case "BlueMerchant(Clone)":
+                    col.GetComponent<BluePriest>().Hit(damage);
+                    pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
+                    break;
+
                 case "BlueBase(Clone)":
                     col.GetComponent<BlueCamp>().Hit(damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
