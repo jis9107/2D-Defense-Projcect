@@ -3098,7 +3098,7 @@ MonoBehaviour:
   blueWinPanel: {fileID: 240376129}
   knightPrice: {fileID: 1154355569}
   soldierPrice: {fileID: 2094478089}
-  merchantPrice: {fileID: 0}
+  merchantPrice: {fileID: 1225278906}
   moneyText: {fileID: 2080929710}
   redSpawn: {fileID: 827724720}
   blueSpawn: {fileID: 1422298433}
