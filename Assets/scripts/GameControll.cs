@@ -24,7 +24,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     //아군 생성
     public Text knightPrice;
     public Text soldierPrice;
-    public Text thiefPrice;
+    public Text merchantPrice;
     public Text moneyText;
 
     public Transform redSpawn;
@@ -78,7 +78,7 @@ public class GameControll : MonoBehaviourPunCallbacks
             }
         }
     }
-    public void ClickSoldier()
+    public void ClickPriest()
     {
         int _priestPrice = int.Parse(soldierPrice.text);
         if (userMoney >= _priestPrice)
@@ -95,20 +95,20 @@ public class GameControll : MonoBehaviourPunCallbacks
             }
         }
     }
-    public void ClickThief()
+    public void ClickMerchant()
     {
-        int _thiefPrice = int.Parse(thiefPrice.text);
-        if (userMoney >= _thiefPrice)
+        int _merchantPrice = int.Parse(merchantPrice.text);
+        if (userMoney >= _merchantPrice)
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.Instantiate("RedThief", redSpawn.position, Quaternion.Euler(0, -180, 0));
-                userMoney -= _thiefPrice;
+                PhotonNetwork.Instantiate("RedMerchant", redSpawn.position, Quaternion.Euler(0, -180, 0));
+                userMoney -= _merchantPrice;
             }
             if (!PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.Instantiate("BlueThief", blueSpawn.position, Quaternion.Euler(0, 0, 0));
-                userMoney -= _thiefPrice;
+                PhotonNetwork.Instantiate("BlueMerchant", blueSpawn.position, Quaternion.Euler(0, 0, 0));
+                userMoney -= _merchantPrice;
             }
         }
     }
@@ -165,6 +165,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         {
             status.knightHealth += 10;
             status.priestHealth += 5;
+            status.merchantHealth += 5;
             userMoney -= _healthUpPrice;
             _healthUpPrice += 2;
             healthUpPrice.text = _healthUpPrice.ToString();

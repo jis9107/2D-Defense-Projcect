@@ -47,7 +47,7 @@ public class BlueMerchant : MonoBehaviourPunCallbacks, IPunObservable
         if (pv.IsMine)
         {
             fireReady += Time.deltaTime;
-            if (fireReady > 1.5f)
+            if (fireReady > 1f)
             {
                 GetMoney();
             }

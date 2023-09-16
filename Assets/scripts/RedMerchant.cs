@@ -28,7 +28,7 @@ public class RedMerchant : MonoBehaviourPunCallbacks, IPunObservable
         an = GetComponent<Animator>();
         _game = FindObjectOfType<GameControll>();
         StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        curHealth = _status.knightHealth;
+        curHealth = _status.merchantHealth;
         _moveSpeed = _status.moveSpeed;
     }
 
@@ -47,7 +47,7 @@ public class RedMerchant : MonoBehaviourPunCallbacks, IPunObservable
         if (pv.IsMine)
         {
             fireReady += Time.deltaTime;
-            if (fireReady > 1.5f)
+            if (fireReady > 1f)
             {
                 GetMoney();
             }
