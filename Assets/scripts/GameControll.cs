@@ -159,6 +159,7 @@ public class GameControll : MonoBehaviourPunCallbacks
                 attackUpButton.SetActive(false);
                 attackMax.SetActive(true);
             }
+            status.UpdateStatus();
         }
     }
 
@@ -180,6 +181,8 @@ public class GameControll : MonoBehaviourPunCallbacks
                 healthMax.SetActive(true);
             }
 
+            status.UpdateStatus();
+
         }
     }
 
@@ -198,6 +201,7 @@ public class GameControll : MonoBehaviourPunCallbacks
                 movespUpButton.SetActive(false);
                 movespMax.SetActive(true);
             }
+            status.UpdateStatus();
 
         }
     }

@@ -6776,7 +6776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &881052087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6977,6 +6977,11 @@ MonoBehaviour:
   priestHealth: 30
   merchantHealth: 30
   moveSpeed: 0.5
+  _knightDamage: {fileID: 97799037}
+  _priestDamage: {fileID: 206691683}
+  _knightHealth: {fileID: 1241522439}
+  _priestHealth: {fileID: 138470857}
+  _merchantHealth: {fileID: 445351879}
 --- !u!1 &912472328
 GameObject:
   m_ObjectHideFlags: 0
@@ -10766,7 +10771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1520859643
 RectTransform:
   m_ObjectHideFlags: 0

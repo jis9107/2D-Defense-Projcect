@@ -137,6 +137,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         loadingPanel.SetActive(false);
         gameStartPanel.SetActive(true);
+        gameControl.userMoney = 20;
     }
     public void ExitGame()
     {

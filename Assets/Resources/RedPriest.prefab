@@ -820,6 +820,7 @@ MonoBehaviour:
   pv: {fileID: 937709223772855514}
   fireBall: {fileID: 81725518}
   curHealth: 30
+  damage: 0
 --- !u!1 &936999497026091001
 GameObject:
   m_ObjectHideFlags: 0
