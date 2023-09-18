@@ -16,10 +16,14 @@ public class GameControll : MonoBehaviourPunCallbacks
     public State _state;
 
     //게임 패널
-    public GameObject panel;
     public GameObject gamestartPanel;
     public GameObject redWinPanel;
     public GameObject blueWinPanel;
+    public GameObject startPanel;
+    public GameObject connectPanel;
+    public GameObject explainPanel;
+    public GameObject explainUpPanel;
+    public GameObject[] panels;
 
     //아군 생성
     public Text knightPrice;
@@ -194,6 +198,38 @@ public class GameControll : MonoBehaviourPunCallbacks
                 movespMax.SetActive(true);
             }
 
+        }
+    }
+
+    public void MoveToConnectPanel()
+    {
+        PanelManager();
+        connectPanel.SetActive(true);
+    }
+
+    public void MoveToExplainUpPanel()
+    {
+        PanelManager();
+        explainUpPanel.SetActive(true);
+    }
+
+    public void MoveToExplainPanel()
+    {
+        PanelManager();
+        explainPanel.SetActive(true);
+    }
+
+    public void MoveToStartPanel()
+    {
+        PanelManager();
+        startPanel.SetActive(true);
+    }
+
+    public void PanelManager()
+    {
+        for (int i = 0; i < panels.Length; i++)
+        {
+            panels[i].SetActive(false);
         }
     }
 
