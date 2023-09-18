@@ -13,9 +13,9 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     public Transform fireBall;
 
     public int curHealth;
+    public int damage;
 
     bool isMove;
-    bool isDamage;
     bool isFireReady;
 
     float _moveSpeed;
@@ -33,6 +33,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
         an = GetComponent<Animator>();
         StatusDataBase _status = FindObjectOfType<StatusDataBase>();
         curHealth = _status.priestHealth;
+        damage = _status.priestDamage;
         _moveSpeed = _status.moveSpeed;
     }
 

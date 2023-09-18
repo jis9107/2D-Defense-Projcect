@@ -9,15 +9,15 @@ public class BFireBall : MonoBehaviourPunCallbacks
 
     public PhotonView pv;
 
-    public int damage;
+    public int _damage;
 
     string _name;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        damage = _status.priestDamage;
+        BluePriest _status = FindObjectOfType<BluePriest>();
+        _damage = _status.damage;
     }
     void Start()
     {
@@ -39,22 +39,22 @@ public class BFireBall : MonoBehaviourPunCallbacks
             {
 
                 case "RedKnight(Clone)":
-                    col.GetComponent<RedKnightScript>().Hit(damage);
+                    col.GetComponent<RedKnightScript>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedPriest(Clone)":
-                    col.GetComponent<RedPriest>().Hit(damage);
+                    col.GetComponent<RedPriest>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedMerchant(Clone)":
-                    col.GetComponent<RedMerchant>().Hit(damage);
+                    col.GetComponent<RedMerchant>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "RedBase(Clone)":
-                    col.GetComponent<RedCamp>().Hit(damage);
+                    col.GetComponent<RedCamp>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 

@@ -66,8 +66,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
-            currentText.text = "매칭 완료";
-            Invoke("GameStart", 2f);
+            currentText.text = "매칭 완료, 3초 후 시작합니다.";
+            Invoke("GameStart", 3f);
         }
     }
 
@@ -116,6 +116,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
+
     }
 
     private void Update()

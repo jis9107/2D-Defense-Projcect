@@ -9,7 +9,7 @@ public class RFireBall : MonoBehaviourPunCallbacks
 
     public PhotonView pv;
 
-    public int damage;
+    public int _damage;
 
     string _name;
 
@@ -17,8 +17,8 @@ public class RFireBall : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        damage = _status.priestDamage;
+        RedPriest _status = FindObjectOfType<RedPriest>();
+        _damage = _status.damage;
     }
     void Start()
     {
@@ -40,22 +40,22 @@ public class RFireBall : MonoBehaviourPunCallbacks
             {
 
                 case "BlueKnight(Clone)":
-                    col.GetComponent<BlueKnightScript>().Hit(damage);
+                    col.GetComponent<BlueKnightScript>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BluePriest(Clone)":
-                    col.GetComponent<BluePriest>().Hit(damage);
+                    col.GetComponent<BluePriest>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BlueMerchant(Clone)":
-                    col.GetComponent<BlueMerchant>().Hit(damage);
+                    col.GetComponent<BlueMerchant>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
                 case "BlueBase(Clone)":
-                    col.GetComponent<BlueCamp>().Hit(damage);
+                    col.GetComponent<BlueCamp>().Hit(_damage);
                     pv.RPC("DestroyRPC", RpcTarget.AllBuffered);
                     break;
 
