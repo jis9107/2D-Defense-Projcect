@@ -50,6 +50,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     public GameObject movespMax;
 
 
+
     public int userMoney;
     bool inGame;
 
@@ -129,19 +130,19 @@ public class GameControll : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
-    public void RedWin()
-    {
-        gamestartPanel.SetActive(false);
-        redWinPanel.SetActive(true);
-    }
+    //[PunRPC]
+    //public void RedWin()
+    //{
+    //    gamestartPanel.SetActive(false);
+    //    redWinPanel.SetActive(true);
+    //}
 
-    [PunRPC]
-    public void BlueWin()
-    {
-        gamestartPanel.SetActive(false);
-        blueWinPanel.SetActive(true);
-    }
+    //[PunRPC]
+    //public void BlueWin()
+    //{
+    //    gamestartPanel.SetActive(false);
+    //    blueWinPanel.SetActive(true);
+    //}
 
     public void UpgradeDamage()
     {
