@@ -113,6 +113,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     }
 
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)

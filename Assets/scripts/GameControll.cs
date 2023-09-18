@@ -225,6 +225,11 @@ public class GameControll : MonoBehaviourPunCallbacks
         startPanel.SetActive(true);
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void PanelManager()
     {
         for (int i = 0; i < panels.Length; i++)
