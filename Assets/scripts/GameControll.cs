@@ -49,7 +49,10 @@ public class GameControll : MonoBehaviourPunCallbacks
     public GameObject healthMax;
     public GameObject movespMax;
 
+    public Image[] spawnImages;
 
+    float spawnTime;
+    bool spawnReady;
 
     public int userMoney;
     bool inGame;
@@ -59,6 +62,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     {
 
         inGame = false;
+        spawnReady = true;
         userMoney = 20;
     }
 
@@ -69,9 +73,10 @@ public class GameControll : MonoBehaviourPunCallbacks
     public void ClickKnight()
     {
         int _knightPrice = int.Parse(knightPrice.text);
-        if(userMoney >= _knightPrice)
+        if(userMoney >= _knightPrice && spawnReady == true)
         {
-            if(PhotonNetwork.IsMasterClient)
+            SpawnTime();
+            if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
                 userMoney -= _knightPrice;
@@ -86,8 +91,9 @@ public class GameControll : MonoBehaviourPunCallbacks
     public void ClickPriest()
     {
         int _priestPrice = int.Parse(soldierPrice.text);
-        if (userMoney >= _priestPrice)
+        if (userMoney >= _priestPrice && spawnReady == true)
         {
+            SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedPriest", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -103,8 +109,9 @@ public class GameControll : MonoBehaviourPunCallbacks
     public void ClickMerchant()
     {
         int _merchantPrice = int.Parse(merchantPrice.text);
-        if (userMoney >= _merchantPrice)
+        if (userMoney >= _merchantPrice && spawnReady == true)
         {
+            SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedMerchant", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -186,7 +193,6 @@ public class GameControll : MonoBehaviourPunCallbacks
         }
     }
 
-
     public void UpgradeMoveSpeed()
     {
         int _movespUpPrice = int.Parse(movespUpPrice.text);
@@ -205,6 +211,18 @@ public class GameControll : MonoBehaviourPunCallbacks
 
         }
     }
+
+    public void SpawnTime()
+    {
+        spawnReady = false;
+        for(int i = 0; i < spawnImages.Length; i++)
+        {
+            spawnImages[i].fillAmount = 0;
+            spawnImages[i].fillAmount += Time.deltaTime / 1.5f;
+        }
+    }
+
+
 
     public void MoveToConnectPanel()
     {
