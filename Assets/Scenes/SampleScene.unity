@@ -6025,6 +6025,10 @@ MonoBehaviour:
   attackMax: {fileID: 54168374}
   healthMax: {fileID: 1561237904}
   movespMax: {fileID: 1184445083}
+  spawnImages:
+  - {fileID: 1962565184}
+  - {fileID: 649773532}
+  - {fileID: 48534033}
   userMoney: 0
 --- !u!4 &743088938
 Transform:
@@ -6776,7 +6780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &881052087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10771,7 +10775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1520859643
 RectTransform:
   m_ObjectHideFlags: 0

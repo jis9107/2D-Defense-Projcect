@@ -75,7 +75,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _knightPrice = int.Parse(knightPrice.text);
         if(userMoney >= _knightPrice && spawnReady == true)
         {
-            SpawnTime();
+            //SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -93,7 +93,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _priestPrice = int.Parse(soldierPrice.text);
         if (userMoney >= _priestPrice && spawnReady == true)
         {
-            SpawnTime();
+            //SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedPriest", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -111,7 +111,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _merchantPrice = int.Parse(merchantPrice.text);
         if (userMoney >= _merchantPrice && spawnReady == true)
         {
-            SpawnTime();
+            //SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedMerchant", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -134,6 +134,11 @@ public class GameControll : MonoBehaviourPunCallbacks
             {
                 moneyText.text = userMoney.ToString();
             }
+        }
+
+        if(spawnReady == false)
+        {
+            spawnImages[0].fillAmount += Time.deltaTime;
         }
     }
 
@@ -215,11 +220,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     public void SpawnTime()
     {
         spawnReady = false;
-        for(int i = 0; i < spawnImages.Length; i++)
-        {
-            spawnImages[i].fillAmount = 0;
-            spawnImages[i].fillAmount += Time.deltaTime / 1.5f;
-        }
+        spawnTime = 0;
     }
 
 
