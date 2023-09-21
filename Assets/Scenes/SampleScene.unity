@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 48534034}
   - component: {fileID: 48534033}
   - component: {fileID: 48534032}
+  - component: {fileID: 48534035}
   m_Layer: 5
   m_Name: MerchanttButton
   m_TagString: Untagged
@@ -523,6 +524,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48534030}
   m_CullTransparentMesh: 0
+--- !u!114 &48534035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48534030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e55f38707c0acb49800e449616ec0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &54168374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,6 +5505,7 @@ GameObject:
   - component: {fileID: 649773533}
   - component: {fileID: 649773532}
   - component: {fileID: 649773531}
+  - component: {fileID: 649773534}
   m_Layer: 5
   m_Name: PriestButton
   m_TagString: Untagged
@@ -5613,6 +5627,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649773529}
   m_CullTransparentMesh: 0
+--- !u!114 &649773534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649773529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e55f38707c0acb49800e449616ec0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &689383688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,6 +6055,7 @@ MonoBehaviour:
   - {fileID: 1962565184}
   - {fileID: 649773532}
   - {fileID: 48534033}
+  spawnReady: 0
   userMoney: 0
 --- !u!4 &743088938
 Transform:
@@ -12728,6 +12755,7 @@ GameObject:
   - component: {fileID: 1962565185}
   - component: {fileID: 1962565184}
   - component: {fileID: 1962565186}
+  - component: {fileID: 1962565187}
   m_Layer: 5
   m_Name: KnightButton
   m_TagString: Untagged
@@ -12849,6 +12877,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1962565187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962565182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e55f38707c0acb49800e449616ec0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1974566304
 GameObject:
   m_ObjectHideFlags: 0
