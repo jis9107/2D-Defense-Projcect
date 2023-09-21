@@ -51,7 +51,6 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     public Image[] spawnImages;
 
-    float spawnTime;
     bool spawnReady;
 
     public int userMoney;
@@ -75,7 +74,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _knightPrice = int.Parse(knightPrice.text);
         if(userMoney >= _knightPrice && spawnReady == true)
         {
-            //SpawnTime();
+            SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedKnight", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -93,7 +92,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _priestPrice = int.Parse(soldierPrice.text);
         if (userMoney >= _priestPrice && spawnReady == true)
         {
-            //SpawnTime();
+            SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedPriest", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -111,7 +110,7 @@ public class GameControll : MonoBehaviourPunCallbacks
         int _merchantPrice = int.Parse(merchantPrice.text);
         if (userMoney >= _merchantPrice && spawnReady == true)
         {
-            //SpawnTime();
+            SpawnTime();
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate("RedMerchant", redSpawn.position, Quaternion.Euler(0, -180, 0));
@@ -135,26 +134,13 @@ public class GameControll : MonoBehaviourPunCallbacks
                 moneyText.text = userMoney.ToString();
             }
         }
-
-        if(spawnReady == false)
+        if(spawnImages[0].fillAmount == 1)
         {
-            spawnImages[0].fillAmount += Time.deltaTime;
+            spawnReady = true;
         }
+
+    
     }
-
-    //[PunRPC]
-    //public void RedWin()
-    //{
-    //    gamestartPanel.SetActive(false);
-    //    redWinPanel.SetActive(true);
-    //}
-
-    //[PunRPC]
-    //public void BlueWin()
-    //{
-    //    gamestartPanel.SetActive(false);
-    //    blueWinPanel.SetActive(true);
-    //}
 
     public void UpgradeDamage()
     {
@@ -220,7 +206,17 @@ public class GameControll : MonoBehaviourPunCallbacks
     public void SpawnTime()
     {
         spawnReady = false;
-        spawnTime = 0;
+        StartCoroutine(SpawnReady());
+        
+    }
+
+    IEnumerator SpawnReady()
+    {
+        yield return null;
+        for (int i = 0; i < spawnImages.Length; i++)
+        {
+            spawnImages[i].fillAmount += 0.5f * Time.deltaTime;
+        }
     }
 
 
