@@ -206,6 +206,10 @@ public class GameControll : MonoBehaviourPunCallbacks
     public void SpawnTime()
     {
         spawnReady = false;
+        for (int i = 0; i < spawnImages.Length; i++)
+        {
+            spawnImages[i].fillAmount = 0;
+        }
         StartCoroutine(SpawnReady());
         
     }
