@@ -31,6 +31,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        
     }
 
     //public void Connect() => PhotonNetwork.ConnectUsingSettings();
@@ -55,10 +56,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         );
     }
 
-    public void CancelMatching()
-    {
-
-    }
 
     private void UpdatePlayerCounts()
     {
@@ -116,7 +113,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-
     }
 
     private void Update()

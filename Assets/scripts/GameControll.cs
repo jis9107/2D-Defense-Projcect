@@ -129,11 +129,25 @@ public class GameControll : MonoBehaviourPunCallbacks
         if (gamestartPanel.activeSelf == true)
         {
             inGame = true;
-            if(inGame == true)
+            if (inGame == true)
             {
                 moneyText.text = userMoney.ToString();
             }
-        }    
+            if(!PhotonNetwork.IsConnected && PhotonNetwork.IsMasterClient)
+            {
+                PanelManager();
+                blueWinPanel.SetActive(true);
+            }
+            if (!PhotonNetwork.IsConnected && !PhotonNetwork.IsMasterClient)
+            {
+                PanelManager();
+                redWinPanel.SetActive(true);
+            }
+        }
+        else
+            inGame = false;
+        
+        
     }
 
     public void UpgradeDamage()
