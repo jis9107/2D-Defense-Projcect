@@ -133,15 +133,15 @@ public class GameControll : MonoBehaviourPunCallbacks
             {
                 moneyText.text = userMoney.ToString();
             }
-            if(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            {
-                gamestartPanel.SetActive(false);
-                blueWinPanel.SetActive(true);
-            }
-            if (!PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            if(_state == State.Red && PhotonNetwork.CurrentRoom.PlayerCount == 1)
             {
                 gamestartPanel.SetActive(false);
                 redWinPanel.SetActive(true);
+            }
+            if (_state == State.Blue && PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                gamestartPanel.SetActive(false);
+                blueWinPanel.SetActive(true);
             }
         }
         else
