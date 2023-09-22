@@ -2188,6 +2188,7 @@ MonoBehaviour:
   loadingPanel: {fileID: 251561990}
   gameStartPanel: {fileID: 881052086}
   gameControl: {fileID: 743088937}
+  status: {fileID: 897452062}
   currentText: {fileID: 1928971722}
   redNick: {fileID: 0}
   blueNick: {fileID: 0}

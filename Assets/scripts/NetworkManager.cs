@@ -14,6 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject gameStartPanel;
 
     public GameControll gameControl;
+    public StatusDataBase status;
 
     public Text currentText;
     public Text redNick;
@@ -55,7 +56,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         roomOptions: roomOptions // 생성할 때의 기준.
         );
     }
-
 
     private void UpdatePlayerCounts()
     {
@@ -131,9 +131,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void GameStart()
     {
+        status.InitializationStatus();
+        gameControl.InitializationGame();
         loadingPanel.SetActive(false);
         gameStartPanel.SetActive(true);
-        gameControl.userMoney = 20;
     }
     public void ExitGame()
     {

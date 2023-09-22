@@ -16,7 +16,6 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     StatusDataBase _status;
 
     public int curHealth;
-    public int damage;
 
     float _moveSpeed;
     float fireReady;
@@ -45,7 +44,6 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
             isFireReady = false;
             curHealth = _status.knightHealth;
             _moveSpeed = _status.moveSpeed;
-            damage = _status.knightDamage;
         }
     }
 
@@ -145,13 +143,11 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(transform.position);
             stream.SendNext(curHealth);
-            stream.SendNext(damage);
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
             curHealth = (int)stream.ReceiveNext();
-            damage = (int)stream.ReceiveNext();
         }
     }
 }

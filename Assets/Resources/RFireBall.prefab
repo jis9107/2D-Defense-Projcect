@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6615047792399562151}
   - component: {fileID: 5937975718632818286}
   - component: {fileID: -6639421077489135204}
-  - component: {fileID: 4305344698085240842}
   - component: {fileID: -9064046780935277907}
   m_Layer: 0
   m_Name: RFireBall
@@ -149,7 +148,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6615047792399562151}
-  - {fileID: 4305344698085240842}
+  - {fileID: -6639421077489135204}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -166,21 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 5937975718632818286}
---- !u!114 &4305344698085240842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4907253386925337388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2d0ed09797f934b85981eb53bd8e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pv: {fileID: 5937975718632818286}
-  type: 1
-  damage: 0
+  _damage: 0
 --- !u!50 &-9064046780935277907
 Rigidbody2D:
   serializedVersion: 4

@@ -11,7 +11,7 @@ public class RFireBall : MonoBehaviourPunCallbacks, IPunObservable
 
     RedPriest _status;
 
-    int _damage;
+    public int _damage;
 
     string _name;
 

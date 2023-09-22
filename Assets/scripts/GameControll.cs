@@ -127,30 +127,32 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-            if (gamestartPanel.activeSelf == true)
+        if (gamestartPanel.activeSelf == true)
+        {
+            inGame = true;
+            if (inGame == true)
             {
-                inGame = true;
-                if (inGame == true)
-                {
-                    moneyText.text = userMoney.ToString();
-                }
-                if (_state == State.Red && PhotonNetwork.CurrentRoom.PlayerCount == 1)
-                {
-                    gamestartPanel.SetActive(false);
-                    redWinPanel.SetActive(true);
-                }
-                if (_state == State.Blue && PhotonNetwork.CurrentRoom.PlayerCount == 1)
-                {
-                    gamestartPanel.SetActive(false);
-                    blueWinPanel.SetActive(true);
-                }
+                moneyText.text = userMoney.ToString();
             }
-            else
-                inGame = false;
-        
+            if (_state == State.Red && PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                gamestartPanel.SetActive(false);
+                redWinPanel.SetActive(true);
+            }
+            if (_state == State.Blue && PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                gamestartPanel.SetActive(false);
+                blueWinPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            inGame = false;
+        }
 
-        
-        
+
+
+
     }
 
     public void UpgradeDamage()
@@ -227,6 +229,15 @@ public class GameControll : MonoBehaviourPunCallbacks
         {
             spawnImages[i].fillAmount = 0;
         }
+    }
+
+    public void InitializationGame()
+    {
+        userMoney = 20;
+        attackUpPrice.text = "2";
+        healthUpPrice.text = "2";
+        movespUpPrice.text = "2";
+
     }
 
 

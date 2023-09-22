@@ -34,4 +34,21 @@ public class StatusDataBase : MonoBehaviourPunCallbacks
         _priestHealth.text = priestHealth.ToString();
         _merchantHealth.text = merchantHealth.ToString();
     }
+
+    public void InitializationStatus()
+    {
+        knightDamage = 10;
+        priestDamage = 15;
+
+        knightHealth = 50;
+        priestHealth = 30;
+        merchantHealth = 30;
+
+        _knightDamage.text = knightDamage.ToString();
+        _priestDamage.text = priestDamage.ToString();
+
+        _knightHealth.text = knightHealth.ToString();
+        _priestHealth.text = priestHealth.ToString();
+        _merchantHealth.text = merchantHealth.ToString();
+    }
 }
