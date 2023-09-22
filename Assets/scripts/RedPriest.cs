@@ -12,6 +12,8 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView pv;
     public Transform fireBall;
 
+    StatusDataBase _status;
+
     public int curHealth;
     public int damage;
 
@@ -31,15 +33,15 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        curHealth = _status.priestHealth;
-        damage = _status.priestDamage;
-        _moveSpeed = _status.moveSpeed;
+        _status = FindObjectOfType<StatusDataBase>();
+
     }
 
     void Start()
     {
-
+        curHealth = _status.priestHealth;
+        damage = _status.priestDamage;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Update()
@@ -52,7 +54,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
         if (pv.IsMine)
         {
             fireReady += Time.deltaTime;
-            if (fireReady > 1.8f)
+            if (fireReady > 2f)
             {
                 isFireReady = true;
             }
@@ -65,7 +67,6 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
                 an.SetBool("walk", false);
             Debug.DrawRay(rb.position + (Vector2.up) + (Vector2.right * 0.7f), Vector2.right * 1.5f, new Color(1, 0, 0));
             RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 1.4f, 1 << LayerMask.NameToLayer("Blue"));
-            //RaycastHit2D hit_our = Physics2D.Raycast(rb.position + Vector2.up + (Vector2.right * 0.7f), Vector2.right, 0.01f);
 
             if (hit.collider == null)
             {
@@ -90,7 +91,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     }
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.85f);
         PhotonNetwork.Instantiate("RFireBall", rb.position + (Vector2.up) + (Vector2.right * 0.7f), Quaternion.Euler(0, 0, 90));
     }
 

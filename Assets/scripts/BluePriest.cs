@@ -12,6 +12,8 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView pv;
     public Transform fireBall;
 
+    StatusDataBase _status;
+
     public int curHealth;
     public int damage;
 
@@ -31,15 +33,14 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        curHealth = _status.priestHealth;
-        damage = _status.priestDamage;
-        _moveSpeed = _status.moveSpeed;
+        _status = FindObjectOfType<StatusDataBase>();
     }
 
     void Start()
     {
-
+        curHealth = _status.priestHealth;
+        damage = _status.priestDamage;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Update()
@@ -52,7 +53,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
         if (pv.IsMine)
         {
             fireReady += Time.deltaTime;
-            if (fireReady > 1.8f)
+            if (fireReady > 2f)
             {
                 isFireReady = true;
             }
@@ -89,7 +90,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
     }
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.85f);
         PhotonNetwork.Instantiate("BFireBall", rb.position + (Vector2.up) + (Vector2.left * 0.7f), Quaternion.Euler(0, 0, -90));
     }
 
@@ -116,34 +117,6 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);
     }
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.tag == "RedMelee")
-    //    {
-    //        if (!isDamage)
-    //        {
-    //            Weapon weapon = other.GetComponent<Weapon>();
-    //            curHealth -= weapon.damage;
-    //            StartCoroutine("OnDamage");
-
-    //            if (curHealth <= 0)
-    //            {
-    //                StopAllCoroutines();
-    //                pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-    //            }
-    //        }
-
-    //    }
-    //}
-
-    //IEnumerator OnDamage()
-    //{
-    //    isDamage = true;
-    //    yield return new WaitForSeconds(1.3f);
-
-    //    isDamage = false;
-    //}
 
     public void Hit(int damage)
     {

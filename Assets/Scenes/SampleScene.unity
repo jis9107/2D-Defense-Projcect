@@ -8102,7 +8102,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Wizzard
+  m_Text: Wizard
 --- !u!222 &1073481204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8271,7 +8271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Wizzard
+  m_Text: Wizard
 --- !u!222 &1102104770
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8430,7 +8430,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 2
+  m_Text: 3
 --- !u!222 &1154355570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10161,7 +10161,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1.5
-  m_Text: "Knight \uACF5\uACA9\uB825 5, Wizzard \uACF5\uACA9\uB825 8 \uC99D\uAC00\uC2DC\uD0A8\uB2E4"
+  m_Text: "Knight \uACF5\uACA9\uB825 5, Wizard \uACF5\uACA9\uB825 8 \uC99D\uAC00\uC2DC\uD0A8\uB2E4"
 --- !u!222 &1395981224
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11062,7 +11062,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1.5
-  m_Text: "Knight \uCCB4\uB825 10, Wizzard \uCCB4\uB825 5 \uC99D\uAC00\uC2DC\uD0A8\uB2E4"
+  m_Text: "Knight \uCCB4\uB825 10, Wizard \uCCB4\uB825 5 \uC99D\uAC00\uC2DC\uD0A8\uB2E4"
 --- !u!222 &1604354159
 CanvasRenderer:
   m_ObjectHideFlags: 0

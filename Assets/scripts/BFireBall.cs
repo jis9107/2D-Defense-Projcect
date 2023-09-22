@@ -9,6 +9,8 @@ public class BFireBall : MonoBehaviourPunCallbacks
 
     public PhotonView pv;
 
+    BluePriest _status;
+
     public int _damage;
 
     string _name;
@@ -16,11 +18,12 @@ public class BFireBall : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     private void Awake()
     {
-        BluePriest _status = FindObjectOfType<BluePriest>();
-        _damage = _status.damage;
+        _status = FindObjectOfType<BluePriest>();
+        
     }
     void Start()
     {
+        _damage = _status.damage;
         Destroy(gameObject, 3f);
     }
 

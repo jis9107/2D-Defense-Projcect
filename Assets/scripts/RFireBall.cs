@@ -9,6 +9,8 @@ public class RFireBall : MonoBehaviourPunCallbacks
 
     public PhotonView pv;
 
+    RedPriest _status;
+
     public int _damage;
 
     string _name;
@@ -17,11 +19,12 @@ public class RFireBall : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        RedPriest _status = FindObjectOfType<RedPriest>();
-        _damage = _status.damage;
+        _status = FindObjectOfType<RedPriest>();
+        
     }
     void Start()
     {
+        _damage = _status.damage;
         Destroy(gameObject, 3f);
     }
 

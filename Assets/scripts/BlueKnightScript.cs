@@ -13,6 +13,8 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public BoxCollider2D meleeArea;
     public Transform sword;
 
+    StatusDataBase _status;
+
     public int curHealth;
 
     float _moveSpeed;
@@ -31,14 +33,15 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        curHealth = _status.knightHealth;
-        _moveSpeed = _status.moveSpeed;
+        _status = FindObjectOfType<StatusDataBase>();
+
     }
 
     void Start()
     {
         isFireReady = false;
+        curHealth = _status.knightHealth;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Update()
@@ -102,7 +105,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         if (!pv.IsMine)
         {
             GameControll _game = FindObjectOfType<GameControll>();
-            _game.userMoney += 2;
+            _game.userMoney += 3;
         }
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);

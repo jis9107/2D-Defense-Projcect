@@ -13,13 +13,14 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     public BoxCollider2D meleeArea;
     public Transform sword;
 
+    StatusDataBase _status;
+
     public int curHealth;
 
     float fireReady;
     float _moveSpeed;
 
     bool isMove;
-    bool isDamage;
     bool isFireReady;
 
     Vector3 curPos;
@@ -28,14 +29,15 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        curHealth = _status.knightHealth;
-        _moveSpeed = _status.moveSpeed;
+        _status = FindObjectOfType<StatusDataBase>();
+
     }
 
     void Start()
     {
-        isFireReady = false;   
+        isFireReady = false;
+        curHealth = _status.knightHealth;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Update()
@@ -99,7 +101,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         if (!pv.IsMine)
         {
             GameControll _game = FindObjectOfType<GameControll>();
-            _game.userMoney += 2;
+            _game.userMoney += 3;
         }
         an.SetTrigger("die");
         Destroy(gameObject, 0.2f);
@@ -117,36 +119,6 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(1f);
         pv.RPC("SwingRPC", RpcTarget.AllBuffered);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        //if (other.tag == "BlueMelee")
-        //{
-        //    if (!isDamage)
-        //    {
-        //        Weapon weapon = other.GetComponent<Weapon>();
-        //        curHealth -= weapon.damage;
-        //        StartCoroutine("OnDamage");
-
-        //        if (curHealth <= 0)
-        //        {
-        //            StopAllCoroutines();
-        //            pv.RPC("DestoryRPC", RpcTarget.AllBuffered);
-        //        }
-
-        //    }
-
-        //}
-    }
-
-    //IEnumerator OnDamage()
-    //{
-    //    isDamage = true;
-    //    yield return new WaitForSeconds(1.3f);
-
-    //    isDamage = false;
-    //}
-
     public void Hit(int damage)
     {
         curHealth -= damage;

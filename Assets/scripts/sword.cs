@@ -9,6 +9,8 @@ public class sword : MonoBehaviourPunCallbacks
     public PhotonView pv;
     public BoxCollider2D meleeArea;
 
+    StatusDataBase _status;
+
     public int damage;
 
     string _name;
@@ -16,12 +18,12 @@ public class sword : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        damage = _status.knightDamage;
+        
     }
     void Start()
     {
-
+        _status = FindObjectOfType<StatusDataBase>();
+        damage = _status.knightDamage;
     }
 
     void Update()
