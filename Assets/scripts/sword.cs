@@ -22,8 +22,12 @@ public class sword : MonoBehaviourPunCallbacks
     }
     void Start()
     {
-        _status = FindObjectOfType<StatusDataBase>();
-        damage = _status.knightDamage;
+        if (pv.IsMine)
+        {
+            _status = FindObjectOfType<StatusDataBase>();
+            damage = _status.knightDamage;
+        }
+
     }
 
     void Update()

@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
-public class GameControll : MonoBehaviourPunCallbacks
+public class GameControll : MonoBehaviourPunCallbacks, IPunObservable
 {
     public enum State
     {
@@ -14,6 +14,7 @@ public class GameControll : MonoBehaviourPunCallbacks
     }
 
     public State _state;
+
 
     //게임 패널
     public GameObject gamestartPanel;
@@ -126,89 +127,97 @@ public class GameControll : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (gamestartPanel.activeSelf == true)
-        {
-            inGame = true;
-            if (inGame == true)
+            if (gamestartPanel.activeSelf == true)
             {
-                moneyText.text = userMoney.ToString();
+                inGame = true;
+                if (inGame == true)
+                {
+                    moneyText.text = userMoney.ToString();
+                }
+                if (_state == State.Red && PhotonNetwork.CurrentRoom.PlayerCount == 1)
+                {
+                    gamestartPanel.SetActive(false);
+                    redWinPanel.SetActive(true);
+                }
+                if (_state == State.Blue && PhotonNetwork.CurrentRoom.PlayerCount == 1)
+                {
+                    gamestartPanel.SetActive(false);
+                    blueWinPanel.SetActive(true);
+                }
             }
-            if(_state == State.Red && PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            {
-                gamestartPanel.SetActive(false);
-                redWinPanel.SetActive(true);
-            }
-            if (_state == State.Blue && PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            {
-                gamestartPanel.SetActive(false);
-                blueWinPanel.SetActive(true);
-            }
-        }
-        else
-            inGame = false;
+            else
+                inGame = false;
+        
+
         
         
     }
 
     public void UpgradeDamage()
     {
-        int _attackUpPrice = int.Parse(attackUpPrice.text);
-        if (userMoney >= _attackUpPrice)
-        {
-            status.knightDamage += 5;
-            status.priestDamage += 8;
-            userMoney -= _attackUpPrice;
-            _attackUpPrice += 2;
-            attackUpPrice.text = _attackUpPrice.ToString();
-            if(_attackUpPrice > 10)
+            int _attackUpPrice = int.Parse(attackUpPrice.text);
+            if (userMoney >= _attackUpPrice)
             {
-                attackUpButton.SetActive(false);
-                attackMax.SetActive(true);
+                status.knightDamage += 5;
+                status.priestDamage += 8;
+                userMoney -= _attackUpPrice;
+                _attackUpPrice += 2;
+                attackUpPrice.text = _attackUpPrice.ToString();
+                if (_attackUpPrice > 10)
+                {
+                    attackUpButton.SetActive(false);
+                    attackMax.SetActive(true);
+                }
+                status.UpdateStatus();
             }
-            status.UpdateStatus();
-        }
+        
+
     }
 
 
     public void UpgradeHealth()
     {
-        int _healthUpPrice = int.Parse(healthUpPrice.text);
-        if (userMoney >= _healthUpPrice)
-        {
-            status.knightHealth += 10;
-            status.priestHealth += 5;
-            status.merchantHealth += 5;
-            userMoney -= _healthUpPrice;
-            _healthUpPrice += 2;
-            healthUpPrice.text = _healthUpPrice.ToString();
-            if (_healthUpPrice > 10)
+            int _healthUpPrice = int.Parse(healthUpPrice.text);
+            if (userMoney >= _healthUpPrice)
             {
-                healthUpButton.SetActive(false);
-                healthMax.SetActive(true);
+                status.knightHealth += 10;
+                status.priestHealth += 5;
+                status.merchantHealth += 5;
+                userMoney -= _healthUpPrice;
+                _healthUpPrice += 2;
+                healthUpPrice.text = _healthUpPrice.ToString();
+                if (_healthUpPrice > 10)
+                {
+                    healthUpButton.SetActive(false);
+                    healthMax.SetActive(true);
+                }
+
+                status.UpdateStatus();
+
             }
+        
 
-            status.UpdateStatus();
-
-        }
     }
 
     public void UpgradeMoveSpeed()
     {
-        int _movespUpPrice = int.Parse(movespUpPrice.text);
-        if (userMoney >= _movespUpPrice)
-        {
-            status.moveSpeed += 0.1f;
-            userMoney -= _movespUpPrice;
-            _movespUpPrice += 2;
-            movespUpPrice.text = _movespUpPrice.ToString();
-            if (_movespUpPrice > 10)
+            int _movespUpPrice = int.Parse(movespUpPrice.text);
+            if (userMoney >= _movespUpPrice)
             {
-                movespUpButton.SetActive(false);
-                movespMax.SetActive(true);
-            }
-            status.UpdateStatus();
+                status.moveSpeed += 0.1f;
+                userMoney -= _movespUpPrice;
+                _movespUpPrice += 2;
+                movespUpPrice.text = _movespUpPrice.ToString();
+                if (_movespUpPrice > 10)
+                {
+                    movespUpButton.SetActive(false);
+                    movespMax.SetActive(true);
+                }
+                status.UpdateStatus();
 
-        }
+            }
+        
+
     }
 
     public void SpawnTime()
@@ -260,4 +269,8 @@ public class GameControll : MonoBehaviourPunCallbacks
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        throw new System.NotImplementedException();
+    }
 }
