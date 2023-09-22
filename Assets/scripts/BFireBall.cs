@@ -11,7 +11,7 @@ public class BFireBall : MonoBehaviourPunCallbacks
 
     BluePriest _status;
 
-    public int _damage;
+    int _damage;
 
     string _name;
 

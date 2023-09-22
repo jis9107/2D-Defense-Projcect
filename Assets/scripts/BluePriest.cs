@@ -14,7 +14,7 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
 
     StatusDataBase _status;
 
-    public int curHealth;
+    int curHealth;
     public int damage;
 
     bool isMove;

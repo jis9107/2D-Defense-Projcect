@@ -15,7 +15,7 @@ public class RedKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     StatusDataBase _status;
 
-    public int curHealth;
+    int curHealth;
 
     float fireReady;
     float _moveSpeed;

@@ -11,7 +11,7 @@ public class sword : MonoBehaviourPunCallbacks
 
     StatusDataBase _status;
 
-    public int damage;
+    int damage;
 
     string _name;
 

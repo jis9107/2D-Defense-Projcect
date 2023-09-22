@@ -15,7 +15,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     StatusDataBase _status;
 
-    public int curHealth;
+    int curHealth;
 
     float _moveSpeed;
     float fireReady;
