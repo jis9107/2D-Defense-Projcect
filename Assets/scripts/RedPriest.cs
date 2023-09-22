@@ -14,7 +14,7 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
 
     StatusDataBase _status;
 
-    int curHealth;
+    public int curHealth;
     public int damage;
 
     bool isMove;
@@ -33,15 +33,19 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        _status = FindObjectOfType<StatusDataBase>();
+
 
     }
 
     void Start()
     {
-        curHealth = _status.priestHealth;
-        damage = _status.priestDamage;
-        _moveSpeed = _status.moveSpeed;
+        if (pv.IsMine)
+        {
+            _status = FindObjectOfType<StatusDataBase>();
+            curHealth = _status.priestHealth;
+            damage = _status.priestDamage;
+            _moveSpeed = _status.moveSpeed;
+        }
     }
 
     void Update()

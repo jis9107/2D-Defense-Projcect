@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
-public class GameControll : MonoBehaviourPunCallbacks, IPunObservable
+public class GameControll : MonoBehaviourPunCallbacks
 {
     public enum State
     {
@@ -267,10 +267,5 @@ public class GameControll : MonoBehaviourPunCallbacks, IPunObservable
         {
             panels[i].SetActive(false);
         }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        throw new System.NotImplementedException();
     }
 }

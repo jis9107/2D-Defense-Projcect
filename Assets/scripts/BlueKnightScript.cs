@@ -15,7 +15,7 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
 
     StatusDataBase _status;
 
-    int curHealth;
+    public int curHealth;
 
     float _moveSpeed;
     float fireReady;
@@ -33,15 +33,18 @@ public class BlueKnightScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        _status = FindObjectOfType<StatusDataBase>();
 
     }
 
     void Start()
     {
-        isFireReady = false;
-        curHealth = _status.knightHealth;
-        _moveSpeed = _status.moveSpeed;
+        if (pv.IsMine)
+        {
+            _status = FindObjectOfType<StatusDataBase>();
+            isFireReady = false;
+            curHealth = _status.knightHealth;
+            _moveSpeed = _status.moveSpeed;
+        }
     }
 
     void Update()

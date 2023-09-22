@@ -11,7 +11,7 @@ public class sword : MonoBehaviourPunCallbacks
 
     StatusDataBase _status;
 
-    int damage;
+    public int damage;
 
     string _name;
 
@@ -27,7 +27,6 @@ public class sword : MonoBehaviourPunCallbacks
             _status = FindObjectOfType<StatusDataBase>();
             damage = _status.knightDamage;
         }
-
     }
 
     void Update()

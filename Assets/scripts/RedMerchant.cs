@@ -12,6 +12,7 @@ public class RedMerchant : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView pv;
 
     GameControll _game;
+    StatusDataBase _status;
 
     public int curHealth;
 
@@ -27,14 +28,14 @@ public class RedMerchant : MonoBehaviourPunCallbacks, IPunObservable
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
         _game = FindObjectOfType<GameControll>();
-        StatusDataBase _status = FindObjectOfType<StatusDataBase>();
-        curHealth = _status.merchantHealth;
-        _moveSpeed = _status.moveSpeed;
+        _status = FindObjectOfType<StatusDataBase>();
+
     }
 
     void Start()
     {
-
+        curHealth = _status.merchantHealth;
+        _moveSpeed = _status.moveSpeed;
     }
 
     void Update()
