@@ -22,10 +22,15 @@ public class sword : MonoBehaviourPunCallbacks, IPunObservable
     }
     void Start()
     {
-        if (pv.IsMine)
+        if (pv.IsMine && PhotonNetwork.IsMasterClient)
         {
-            _status = FindObjectOfType<StatusDataBase>();
-            damage = _status.knightDamage;
+            RedKnightScript _status = FindObjectOfType<RedKnightScript>();
+            damage = _status.damage;
+        }
+        if(pv.IsMine && !PhotonNetwork.IsMasterClient)
+        {
+            BlueKnightScript _status = FindObjectOfType<BlueKnightScript>();
+            damage = _status.damage;
         }
     }
 

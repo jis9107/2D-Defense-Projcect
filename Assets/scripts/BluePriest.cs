@@ -137,11 +137,13 @@ public class BluePriest : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(transform.position);
             stream.SendNext(curHealth);
+            stream.SendNext(damage);
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
             curHealth = (int)stream.ReceiveNext();
+            damage = (int)stream.ReceiveNext();
         }
     }
 }
