@@ -439,6 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 6303256454116978813}
   meleeArea: {fileID: 683705671}
+  damage: 0
 --- !u!1 &9033280742241102028
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +671,7 @@ MonoBehaviour:
   pv: {fileID: 9033980577547507638}
   meleeArea: {fileID: 683705671}
   sword: {fileID: 1733043902}
+  curHealth: 0
 --- !u!1 &9033280742654033398
 GameObject:
   m_ObjectHideFlags: 0

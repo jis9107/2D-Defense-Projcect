@@ -138,10 +138,12 @@ public class RedPriest : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(transform.position);
+            stream.SendNext(curHealth);
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
+            curHealth = (int)stream.ReceiveNext();
         }
     }
 }

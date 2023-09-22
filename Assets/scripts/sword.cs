@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class sword : MonoBehaviourPunCallbacks
+public class sword : MonoBehaviourPunCallbacks, IPunObservable
 {
     public PhotonView pv;
     public BoxCollider2D meleeArea;
@@ -109,4 +109,15 @@ public class sword : MonoBehaviourPunCallbacks
         meleeArea.enabled = false;
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(damage);
+        }
+        else
+        {
+            damage = (int)stream.ReceiveNext();
+        }
+    }
 }

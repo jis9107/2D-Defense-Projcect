@@ -4,14 +4,14 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class BFireBall : MonoBehaviourPunCallbacks
+public class BFireBall : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public PhotonView pv;
 
     BluePriest _status;
 
-    int _damage;
+    public int _damage;
 
     string _name;
 
@@ -70,4 +70,15 @@ public class BFireBall : MonoBehaviourPunCallbacks
     [PunRPC]
     void DestroyRPC() => Destroy(gameObject);
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(_damage);
+        }
+        else
+        {
+            _damage = (int)stream.ReceiveNext();
+        }
+    }
 }

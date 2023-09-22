@@ -28,14 +28,18 @@ public class BlueMerchant : MonoBehaviourPunCallbacks, IPunObservable
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
         _game = FindObjectOfType<GameControll>();
-        _status = FindObjectOfType<StatusDataBase>();
+        
 
     }
 
     void Start()
     {
-        curHealth = _status.merchantHealth;
-        _moveSpeed = _status.moveSpeed;
+        if (pv.IsMine)
+        {
+            _status = FindObjectOfType<StatusDataBase>();
+            curHealth = _status.merchantHealth;
+            _moveSpeed = _status.moveSpeed;
+        }
     }
 
     void Update()
@@ -113,10 +117,12 @@ public class BlueMerchant : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(transform.position);
+            stream.SendNext(curHealth);
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
+            curHealth = (int)stream.ReceiveNext();
         }
     }
 

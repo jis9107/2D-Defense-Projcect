@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RFireBall : MonoBehaviourPunCallbacks
+public class RFireBall : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public PhotonView pv;
@@ -72,4 +72,15 @@ public class RFireBall : MonoBehaviourPunCallbacks
     [PunRPC]
     void DestroyRPC() => Destroy(gameObject);
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(_damage);
+        }
+        else
+        {
+            _damage = (int)stream.ReceiveNext();
+        }
+    }
 }
