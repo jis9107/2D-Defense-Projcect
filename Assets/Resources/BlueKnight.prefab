@@ -725,7 +725,6 @@ MonoBehaviour:
   meleeArea: {fileID: 7333405666105281686}
   sword: {fileID: 1598224617}
   curHealth: 0
-  damage: 0
 --- !u!1 &1772682540340966439
 GameObject:
   m_ObjectHideFlags: 0
