@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// 뒤끝 SDK namespace 추가
+using TMPro;
 using BackEnd;
+using UnityEngine.UI;
 
-public class BackendLogin
+public class BackendLogin : MonoBehaviour
 {
+    [SerializeField]
+    private TMP_InputField inputFieldID;
+    [SerializeField]
+    private TMP_InputField inputFieldPW;
+
+    [SerializeField]
+    private Button btnLogin;
     private static BackendLogin _instance = null;
 
     public static BackendLogin Instance
@@ -21,14 +28,35 @@ public class BackendLogin
             return _instance;
         }
     }
-
-    public void CustomSignUp(string id)
+    
+    public void OnClickLogin()
     {
-        // Step 2. 회원가입 구현하기 로직
+        // 로그인 버튼 연타하지 못하도록 상호작용 비활성화
+        btnLogin.interactable = false;
+
+        //서버에 로그인을 요청하는 동안 화면에 출력하는 내용 업데이트
+
+        // 뒤끝 서버 로그인 시도
+        ResponseToLogin(inputFieldID.text, inputFieldPW.text);
+        
     }
 
-    public void CustomLogin(string id)
+    private void ResponseToLogin(string ID, string PW)
     {
-        // Step 3. 로그인 구현하기 로직
+        //서버에 로그인 요청
+        Backend.BMember.CustomLogin(ID, PW, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                SetMessage
+            }
+        }
     }
+
+    private IEnumerator LoginProcess()
+    {
+
+    }
+    
+
 }
